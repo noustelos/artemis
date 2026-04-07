@@ -48,6 +48,28 @@
         color: #264333;
       }
 
+      .mobile-nav-panel {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height 0.3s ease, opacity 0.24s ease, margin-top 0.24s ease;
+      }
+
+      .mobile-nav-panel.is-open {
+        max-height: 28rem;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-nav-toggle[aria-expanded='true'] .mobile-nav-icon-open {
+        display: none;
+      }
+
+      .mobile-nav-toggle[aria-expanded='false'] .mobile-nav-icon-close {
+        display: none;
+      }
+
       .mobile-sticky-cta {
         transform: translateY(calc(100% + 1rem));
         opacity: 0;
@@ -325,19 +347,53 @@
 
       <nav class="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
         <a href="#top" class="font-display text-lg font-semibold tracking-wide text-beige sm:text-xl">Canine Calm</a>
-        <div class="flex items-center gap-3 sm:gap-4 md:gap-8">
-          <div class="hidden items-center gap-8 text-sm font-medium text-beige/90 md:flex">
+        <div class="flex items-center gap-2 sm:gap-3 lg:gap-8">
+          <div class="hidden items-center gap-8 text-sm font-medium text-beige/90 lg:flex">
           <a href="#problems" class="transition hover:text-white">Problems</a>
           <a href="#philosophy" class="transition hover:text-white">Philosophy</a>
           <a href="#products" class="transition hover:text-white">Products</a>
+          <a href="interactive-dog-conversation.html" class="transition hover:text-white">Interactive</a>
           <a href="#faq" class="transition hover:text-white">FAQ</a>
           </div>
+          <a
+            href="interactive-dog-conversation.html"
+            class="hidden items-center justify-center rounded-full border border-white/20 bg-white/10 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition hover:border-white/35 hover:bg-white/15 lg:inline-flex lg:px-4 lg:text-xs"
+          >
+            Interactive
+          </a>
           <div class="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 p-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm sm:gap-2 sm:text-xs">
             <a href="index.html" aria-current="page" class="rounded-full bg-white px-2.5 py-2 text-forest sm:px-3">EN</a>
             <a href="norwegian.html" class="rounded-full px-2.5 py-2 text-white/80 transition hover:text-white sm:px-3">NO</a>
           </div>
+          <button
+            type="button"
+            class="mobile-nav-toggle inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-sm transition hover:border-white/35 hover:bg-white/15 lg:hidden"
+            aria-expanded="false"
+            aria-controls="mobile-nav-menu"
+            aria-label="Toggle navigation"
+            data-mobile-nav-toggle
+          >
+            <svg class="mobile-nav-icon-open h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+            </svg>
+            <svg class="mobile-nav-icon-close h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke-linecap="round" />
+            </svg>
+          </button>
         </div>
       </nav>
+
+      <div id="mobile-nav-menu" class="mobile-nav-panel relative z-10 mx-auto max-w-7xl px-6 pb-2 lg:hidden" data-mobile-nav-menu>
+        <div class="rounded-[1.75rem] border border-white/15 bg-white/10 p-3 shadow-soft backdrop-blur-md">
+          <div class="grid gap-2 text-sm font-semibold text-white">
+            <a href="#problems" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Problems</a>
+            <a href="#philosophy" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Philosophy</a>
+            <a href="#products" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Products</a>
+            <a href="interactive-dog-conversation.html" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Interactive Experience</a>
+            <a href="#faq" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>FAQ</a>
+          </div>
+        </div>
+      </div>
 
       <section id="top" class="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl items-center px-6 pb-24 pt-14 lg:px-8">
         <div class="max-w-3xl">
@@ -1143,6 +1199,45 @@
       document.querySelectorAll('#philosophy .shadow-card, #behavior-quiz, #emotion-card, #offer .shadow-card, .faq-item').forEach((element) => {
         element.classList.add('micro-lift');
       });
+
+      const mobileNavToggle = document.querySelector('[data-mobile-nav-toggle]');
+      const mobileNavMenu = document.querySelector('[data-mobile-nav-menu]');
+      const mobileNavLinks = document.querySelectorAll('[data-mobile-nav-link]');
+
+      if (mobileNavToggle && mobileNavMenu) {
+        const closeMobileNav = () => {
+          mobileNavToggle.setAttribute('aria-expanded', 'false');
+          mobileNavMenu.classList.remove('is-open');
+        };
+
+        const openMobileNav = () => {
+          mobileNavToggle.setAttribute('aria-expanded', 'true');
+          mobileNavMenu.classList.add('is-open');
+        };
+
+        mobileNavToggle.addEventListener('click', () => {
+          const isOpen = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+
+          if (isOpen) {
+            closeMobileNav();
+            return;
+          }
+
+          openMobileNav();
+        });
+
+        mobileNavLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            closeMobileNav();
+          });
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 1024) {
+            closeMobileNav();
+          }
+        });
+      }
 
       const mobileStickyCta = document.getElementById('mobile-sticky-cta');
       const offerSection = document.getElementById('offer');
