@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Premium dog behavior PDF guides and ethical training webinars for dog owners who want calmer, trust-based results."
+    />
+    <title>Ethical Dog Behavior Guides & Webinars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: '#1F3D2B',
+              beige: '#F5F2EB',
+              sand: '#E7E0D6',
+              terracotta: '#C76D4A',
+            },
+            fontFamily: {
+              display: ['Playfair Display', 'serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              soft: '0 20px 60px rgba(31, 61, 43, 0.10)',
+              card: '0 14px 40px rgba(31, 61, 43, 0.08)',
+            },
+            backgroundImage: {
+              grain:
+                "radial-gradient(circle at 20% 20%, rgba(199, 109, 74, 0.12), transparent 30%), radial-gradient(circle at 80% 0%, rgba(31, 61, 43, 0.12), transparent 26%), linear-gradient(180deg, rgba(245, 242, 235, 0.96), rgba(231, 224, 214, 0.96))",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f5f2eb;
+        color: #264333;
+      }
+
+      .fade-section {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hero-overlay {
+        background: linear-gradient(90deg, rgba(18, 39, 28, 0.76) 0%, rgba(18, 39, 28, 0.48) 45%, rgba(18, 39, 28, 0.24) 100%);
+      }
+
+      .quiz-option input:checked + span {
+        background: #1f3d2b;
+        color: #f5f2eb;
+        border-color: #1f3d2b;
+      }
+    </style>
+  </head>
+  <body class="bg-beige font-body text-forest antialiased selection:bg-terracotta/20">
+    <!-- Hero -->
+    <header class="relative isolate overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1800&q=80"
+        alt="A person calmly interacting with a dog outdoors"
+        class="absolute inset-0 h-full w-full object-cover"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-beige/90"></div>
+
+      <nav class="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
+        <a href="#top" class="font-display text-xl font-semibold tracking-wide text-beige">Canine Calm</a>
+        <div class="flex items-center gap-4 md:gap-8">
+          <div class="hidden items-center gap-8 text-sm font-medium text-beige/90 md:flex">
+          <a href="#problems" class="transition hover:text-white">Problems</a>
+          <a href="#philosophy" class="transition hover:text-white">Philosophy</a>
+          <a href="#products" class="transition hover:text-white">Products</a>
+          <a href="#faq" class="transition hover:text-white">FAQ</a>
+          </div>
+          <div class="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 p-1 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+            <a href="index.html" aria-current="page" class="rounded-full bg-white px-3 py-2 text-forest">EN</a>
+            <a href="norwegian.html" class="rounded-full px-3 py-2 text-white/80 transition hover:text-white">NO</a>
+          </div>
+        </div>
+      </nav>
+
+      <section id="top" class="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl items-center px-6 pb-24 pt-14 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full border border-beige/30 bg-white/10 px-4 py-2 text-sm font-medium text-beige backdrop-blur-sm">
+            Ethical dog psychology for modern owners
+          </span>
+          <h1 class="mt-8 font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl">
+            Understand Your Dog. Solve Behavior Problems With Respect.
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-beige/90 sm:text-xl">
+            Practical guides and live webinars that help dog owners understand behavior, reduce stress, and build a healthy relationship with their dog.
+          </p>
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="#products"
+              class="inline-flex items-center justify-center rounded-full bg-terracotta px-7 py-4 text-base font-semibold text-white shadow-soft transition duration-300 hover:-translate-y-0.5 hover:bg-[#b9603e]"
+            >
+              Explore the Guides
+            </a>
+            <a
+              href="#offer"
+              class="inline-flex items-center justify-center rounded-full border border-beige/40 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-sm transition duration-300 hover:border-white hover:bg-white/20"
+            >
+              Join a Webinar
+            </a>
+          </div>
+          <div class="mt-12 grid max-w-2xl gap-4 text-sm text-beige/85 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 backdrop-blur-sm">Fear-free methods</div>
+            <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 backdrop-blur-sm">Practical PDF learning</div>
+            <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 backdrop-blur-sm">Live expert webinars</div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <!-- Common problems -->
+      <section id="problems" class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Behavior decoded</p>
+          <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Most dog behavior problems are not bad behavior — they are communication problems.</h2>
+          <p class="mt-5 text-lg leading-8 text-forest/75">
+            Our resources help owners identify the emotional need behind the behavior, then respond with structure, clarity, and respect.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <article class="group rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sand text-terracotta">
+              <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12c4-5 12-5 16 0"/><path d="M8 15c2-2 6-2 8 0"/><circle cx="12" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-forest">Excessive barking</h3>
+            <p class="mt-3 leading-7 text-forest/70">Learn how to spot stress, alert patterns, and unmet needs behind constant vocalization.</p>
+          </article>
+
+          <article class="group rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sand text-terracotta">
+              <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c4-4 7-7 7-11a7 7 0 1 0-14 0c0 4 3 7 7 11Z"/><path d="M9 11h6"/><path d="M12 8v6"/></svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-forest">Separation anxiety</h3>
+            <p class="mt-3 leading-7 text-forest/70">Understand panic signals and create predictable departures that lower your dog's stress.</p>
+          </article>
+
+          <article class="group rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sand text-terracotta">
+              <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 14 4-4 3 3 7-7"/><path d="M17 6h2v2"/><path d="M4 20c2-3 4-4 7-4 4 0 5 1 9 4"/></svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-forest">Aggressive reactions</h3>
+            <p class="mt-3 leading-7 text-forest/70">Replace punishment with practical management and safe confidence-building routines.</p>
+          </article>
+
+          <article class="group rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sand text-terracotta">
+              <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16c5 0 5-8 10-8"/><path d="M14 8h6v6"/><path d="M4 8c1.5 0 2.5 1 2.5 2.5S5.5 13 4 13 1.5 12 1.5 10.5 2.5 8 4 8Z"/></svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-forest">Pulling on the leash</h3>
+            <p class="mt-3 leading-7 text-forest/70">Discover why walks feel overstimulating and how to teach calmer movement without force.</p>
+          </article>
+
+          <article class="group rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sand text-terracotta">
+              <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="m9 9 6 6"/><path d="m15 9-6 6"/></svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-forest">Destructive behavior</h3>
+            <p class="mt-3 leading-7 text-forest/70">Identify whether chewing and destruction come from boredom, stress, or isolation.</p>
+          </article>
+
+          <article class="group rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sand text-terracotta">
+              <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 8v8l8 5 8-5V8l-8-5Z"/><path d="M12 8v8"/><path d="M8 10.5 12 13l4-2.5"/></svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-forest">Fear and insecurity</h3>
+            <p class="mt-3 leading-7 text-forest/70">Build safety through trust-based routines that support nervous or sensitive dogs.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Philosophy -->
+      <section id="philosophy" class="fade-section bg-sand/60 py-20 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
+          <div class="order-2 lg:order-1">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Our philosophy</p>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">A More Ethical Way To Train Dogs</h2>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/75">
+              Ethical dog education starts by understanding emotion, environment, and communication. We teach owners to change behavior without damaging trust.
+            </p>
+
+            <div class="mt-10 space-y-5">
+              <div class="rounded-[1.75rem] bg-white p-6 shadow-card">
+                <div class="flex items-start gap-4">
+                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-beige text-terracotta">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4c4.5 0 8 3.5 8 8s-3.5 8-8 8-8-3.5-8-8 3.5-8 8-8Z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-forest">Respect animal psychology</h3>
+                    <p class="mt-2 leading-7 text-forest/70">Behavior makes more sense when you account for fear, arousal, frustration, and learned expectations.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-[1.75rem] bg-white p-6 shadow-card">
+                <div class="flex items-start gap-4">
+                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-beige text-terracotta">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-4.5 7-11V5l-7-2-7 2v5c0 6.5 7 11 7 11Z"/><path d="m9.5 12 2 2 3.5-4"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-forest">Train without fear</h3>
+                    <p class="mt-2 leading-7 text-forest/70">We focus on clear guidance, reinforcement, and management instead of intimidation or pain.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-[1.75rem] bg-white p-6 shadow-card">
+                <div class="flex items-start gap-4">
+                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-beige text-terracotta">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 12a5 5 0 0 1 5-5c3.2 0 5 2.6 5 5 0 4.5-5 7-5 7s-5-2.5-5-7Z"/><path d="M3 11c0 2.5 1.5 4.5 4 5"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-forest">Build trust instead of dominance</h3>
+                    <p class="mt-2 leading-7 text-forest/70">Lasting behavior change happens when dogs feel safe enough to learn and engage with you.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-1 lg:order-2">
+            <div class="relative overflow-hidden rounded-[2rem] shadow-soft">
+              <div class="absolute inset-0 bg-gradient-to-t from-forest/30 to-transparent"></div>
+              <img
+                src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80"
+                alt="A calm dog looking at its owner during training"
+                class="h-full min-h-[420px] w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section id="products" class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Digital products</p>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Clear next steps for owners who want calm, practical help</h2>
+          </div>
+          <p class="max-w-xl text-lg leading-8 text-forest/72">
+            Choose self-paced PDF learning, live webinar guidance, or both for a complete behavior support system.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-2">
+          <article class="rounded-[2rem] bg-white p-8 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="font-display text-3xl text-forest">PDF Guides</h3>
+              <span class="rounded-full bg-sand px-4 py-2 text-sm font-semibold text-forest">Instant access</span>
+            </div>
+            <p class="mt-5 max-w-xl leading-8 text-forest/72">
+              Concise, practical behavior guides designed to help you understand what your dog is communicating and what to do next.
+            </p>
+            <ul class="mt-8 space-y-4 text-forest/78">
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Stop excessive barking</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Understanding dog anxiety</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Ethical training basics</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Communication signals in dogs</span></li>
+            </ul>
+            <a
+              href="#offer"
+              class="mt-10 inline-flex items-center justify-center rounded-full bg-forest px-6 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+            >
+              Download Guides
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] bg-forest p-8 text-beige shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="font-display text-3xl">Live Webinars</h3>
+              <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-beige">Expert-led</span>
+            </div>
+            <p class="mt-5 max-w-xl leading-8 text-beige/80">
+              Structured, in-depth sessions that connect dog psychology with real-world owner challenges and actionable steps.
+            </p>
+            <ul class="mt-8 space-y-4 text-beige/90">
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>60–90 minute sessions</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Behavior problem deep dives</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Q&amp;A with participants</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Real-life case studies</span></li>
+            </ul>
+            <a
+              href="#offer"
+              class="mt-10 inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-3.5 font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
+            >
+              Reserve Your Seat
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Interactive quiz -->
+      <section class="fade-section bg-[image:var(--tw-gradient-stops)] from-white to-sand/40 py-20 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Quick insight quiz</p>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">What Is Your Dog Trying To Tell You?</h2>
+            <p class="mt-5 max-w-xl text-lg leading-8 text-forest/75">
+              Answer four quick questions and get a simple suggestion about the kind of support your dog may need most right now.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] bg-white p-8 shadow-soft">
+            <form id="dog-quiz" class="space-y-8">
+              <fieldset>
+                <legend class="text-lg font-semibold text-forest">1. Does your dog bark when you leave the house?</legend>
+                <div class="mt-4 flex flex-wrap gap-3">
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q1" value="anxiety" class="sr-only" required />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">Yes</span>
+                  </label>
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q1" value="none" class="sr-only" />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">No</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend class="text-lg font-semibold text-forest">2. Does your dog pull strongly on the leash?</legend>
+                <div class="mt-4 flex flex-wrap gap-3">
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q2" value="leash" class="sr-only" required />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">Yes</span>
+                  </label>
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q2" value="none" class="sr-only" />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">No</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend class="text-lg font-semibold text-forest">3. Does your dog destroy objects when alone?</legend>
+                <div class="mt-4 flex flex-wrap gap-3">
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q3" value="anxiety" class="sr-only" required />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">Yes</span>
+                  </label>
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q3" value="none" class="sr-only" />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">No</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend class="text-lg font-semibold text-forest">4. Does your dog seem fearful around new people or environments?</legend>
+                <div class="mt-4 flex flex-wrap gap-3">
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q4" value="fear" class="sr-only" required />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">Yes</span>
+                  </label>
+                  <label class="quiz-option cursor-pointer">
+                    <input type="radio" name="q4" value="none" class="sr-only" />
+                    <span class="inline-flex rounded-full border border-sand px-5 py-3 font-medium text-forest transition">No</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-3.5 font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
+              >
+                See the Recommendation
+              </button>
+            </form>
+
+            <div id="quiz-result" class="mt-8 hidden rounded-[1.75rem] bg-sand/70 p-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Suggested next step</p>
+              <h3 id="quiz-result-title" class="mt-3 font-display text-3xl text-forest"></h3>
+              <p id="quiz-result-text" class="mt-3 max-w-2xl leading-8 text-forest/75"></p>
+              <a
+                href="#products"
+                class="mt-6 inline-flex items-center justify-center rounded-full bg-forest px-6 py-3 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+              >
+                See the recommended guide
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social proof -->
+      <section class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Social proof</p>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Dog owners who needed clarity, not pressure</h2>
+          </div>
+          <p class="max-w-xl text-lg leading-8 text-forest/72">Real feedback from owners who used the guides and webinars to reduce chaos and create more trust at home.</p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <article class="rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex items-center gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=220&q=80"
+                alt="Golden dog portrait"
+                class="h-16 w-16 rounded-2xl object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <p class="font-semibold text-forest">Maria &amp; Luna</p>
+                <p class="text-sm text-forest/60">Barking and stress</p>
+              </div>
+            </div>
+            <p class="mt-6 leading-8 text-forest/76">
+              “The barking guide changed how I saw the problem. Instead of correcting Luna, I started understanding what triggered her. Within weeks, the house felt calmer.”
+            </p>
+          </article>
+
+          <article class="rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex items-center gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=220&q=80"
+                alt="Brown dog portrait"
+                class="h-16 w-16 rounded-2xl object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <p class="font-semibold text-forest">James &amp; Milo</p>
+                <p class="text-sm text-forest/60">Leash pulling</p>
+              </div>
+            </div>
+            <p class="mt-6 leading-8 text-forest/76">
+              “The webinar helped me understand arousal and pacing on walks. Milo is more focused now, and I finally have a plan that feels humane.”
+            </p>
+          </article>
+
+          <article class="rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex items-center gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=220&q=80"
+                alt="White dog portrait"
+                class="h-16 w-16 rounded-2xl object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <p class="font-semibold text-forest">Eleni &amp; Poppy</p>
+                <p class="text-sm text-forest/60">Fear and insecurity</p>
+              </div>
+            </div>
+            <p class="mt-6 leading-8 text-forest/76">
+              “I stopped trying to ‘fix’ everything quickly. The guides helped me work with Poppy’s fear gently, and that changed our relationship.”
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Educational section -->
+      <section class="fade-section bg-forest py-20 text-beige lg:py-24">
+        <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Mini education</p>
+          <h2 class="mt-4 font-display text-4xl sm:text-5xl">Why Dogs Bark Excessively</h2>
+          <p class="mx-auto mt-6 max-w-3xl text-lg leading-9 text-beige/82">
+            Barking is often triggered by alertness, frustration, anxiety, or a lack of predictability in the environment. When owners respond only to the noise, they miss the underlying emotion. Lasting change usually comes from reducing stressors, teaching alternative behaviors, and helping the dog feel safer and more understood.
+          </p>
+        </div>
+      </section>
+
+      <!-- Offer -->
+      <section id="offer" class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="overflow-hidden rounded-[2.5rem] bg-grain shadow-soft">
+          <div class="grid gap-10 px-8 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-14 lg:py-14">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Bundle offer</p>
+              <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Dog Behavior Starter Pack</h2>
+              <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/76">
+                A focused starter bundle for dog owners who want immediate, ethical guidance without overwhelm.
+              </p>
+              <ul class="mt-8 space-y-4 text-lg text-forest/80">
+                <li class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>5 PDF guides</span></li>
+                <li class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>1 recorded webinar</span></li>
+                <li class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Bonus checklist</span></li>
+              </ul>
+            </div>
+
+            <div class="rounded-[2rem] bg-white/80 p-8 shadow-card backdrop-blur-sm">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-forest/55">Special starter price</p>
+              <div class="mt-4 flex items-end gap-3">
+                <span class="font-display text-6xl text-forest">€29</span>
+                <span class="pb-2 text-forest/55">one-time payment</span>
+              </div>
+              <p class="mt-5 leading-8 text-forest/72">
+                Start with the most common behavior challenges and learn at your own pace, with expert guidance already included.
+              </p>
+              <a
+                href="#top"
+                class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-terracotta px-6 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
+              >
+                Get Instant Access
+              </a>
+              <p class="mt-4 text-center text-sm font-medium text-forest/55">Instant download after purchase</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="fade-section bg-sand/70 py-20 lg:py-24">
+        <div class="mx-auto max-w-4xl px-6 lg:px-8">
+          <div class="text-center">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">FAQ</p>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Common questions before you start</h2>
+          </div>
+
+          <div class="mt-12 space-y-4">
+            <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
+              <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
+                <span>Do these methods work for puppies?</span>
+                <span class="text-2xl text-terracotta">+</span>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
+                Yes. The principles are especially useful for puppies because they focus on emotional safety, communication, and prevention rather than correction.
+              </div>
+            </article>
+
+            <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
+              <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
+                <span>Are these training methods humane?</span>
+                <span class="text-2xl text-terracotta">+</span>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
+                Yes. The guides and webinars are built around ethical, fear-free methods that prioritize welfare, trust, and realistic progress.
+              </div>
+            </article>
+
+            <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
+              <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
+                <span>Do I need experience with dogs?</span>
+                <span class="text-2xl text-terracotta">+</span>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
+                No. The material is written for everyday dog owners and explains concepts in a practical, accessible way.
+              </div>
+            </article>
+
+            <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
+              <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
+                <span>How do I access the guides?</span>
+                <span class="text-2xl text-terracotta">+</span>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
+                Access is digital. After purchase, you receive immediate download access to the PDF guides and webinar materials.
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="fade-section mx-auto max-w-5xl px-6 py-20 text-center lg:px-8 lg:py-24">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Start today</p>
+        <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Build a Better Relationship With Your Dog</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-forest/72">
+          Start with calm, ethical learning tools that help you understand what your dog needs and how to respond well.
+        </p>
+        <a
+          href="#offer"
+          class="mt-10 inline-flex items-center justify-center rounded-full bg-forest px-8 py-4 text-lg font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+        >
+          Start Learning Today
+        </a>
+      </section>
+    </main>
+
+    <!-- Mobile sticky CTA -->
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-forest/10 bg-beige/95 p-4 shadow-soft backdrop-blur md:hidden">
+      <a
+        href="#offer"
+        class="inline-flex w-full items-center justify-center rounded-full bg-terracotta px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
+      >
+        Get Instant Access
+      </a>
+    </div>
+
+    <!-- Minimal interaction scripts -->
+    <script>
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
+
+      document.querySelectorAll('.fade-section').forEach((section) => {
+        revealObserver.observe(section);
+      });
+
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach((item) => {
+        const button = item.querySelector('.faq-toggle');
+        const content = item.querySelector('.faq-content');
+        const icon = button.querySelector('span:last-child');
+
+        button.addEventListener('click', () => {
+          const isOpen = !content.classList.contains('hidden');
+          faqItems.forEach((currentItem) => {
+            currentItem.querySelector('.faq-content').classList.add('hidden');
+            currentItem.querySelector('.faq-toggle span:last-child').textContent = '+';
+          });
+
+          if (!isOpen) {
+            content.classList.remove('hidden');
+            icon.textContent = '−';
+          }
+        });
+      });
+
+      const quizForm = document.getElementById('dog-quiz');
+      const resultBox = document.getElementById('quiz-result');
+      const resultTitle = document.getElementById('quiz-result-title');
+      const resultText = document.getElementById('quiz-result-text');
+
+      const recommendations = {
+        anxiety: {
+          title: 'Your dog may be experiencing separation anxiety.',
+          text: 'The strongest signals point to stress around isolation or departures. Start with the anxiety guide and routines that create more predictability and safety.',
+        },
+        leash: {
+          title: 'Your dog may need calmer, more structured walk support.',
+          text: 'Pulling often reflects arousal, urgency, or overwhelm. The leash guide can help you reduce tension and teach calmer movement without force.',
+        },
+        fear: {
+          title: 'Your dog may be communicating fear or insecurity.',
+          text: 'Sensitivity around people or new environments usually needs gentle exposure, safety, and trust-building. The fear guide is the best next step.',
+        },
+        balanced: {
+          title: 'Your dog may benefit from a general behavior foundation.',
+          text: 'Your answers suggest a mix of smaller communication issues rather than one dominant pattern. Start with the ethical training basics guide for a clear framework.',
+        },
+      };
+
+      quizForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(quizForm);
+        const scores = { anxiety: 0, leash: 0, fear: 0 };
+
+        formData.forEach((value) => {
+          if (scores[value] !== undefined) {
+            scores[value] += 1;
+          }
+        });
+
+        const highestEntry = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
+        const selectedRecommendation = highestEntry[1] > 0 ? recommendations[highestEntry[0]] : recommendations.balanced;
+
+        resultTitle.textContent = selectedRecommendation.title;
+        resultText.textContent = selectedRecommendation.text;
+        resultBox.classList.remove('hidden');
+        resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    </script>
+  </body>
+</html>
