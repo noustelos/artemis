@@ -48,6 +48,83 @@
         color: #264333;
       }
 
+      .site-sticky-header {
+        border-bottom: 1px solid transparent;
+        -webkit-backdrop-filter: saturate(145%) blur(22px);
+        backdrop-filter: saturate(145%) blur(22px);
+        will-change: background-color, border-color, box-shadow, transform;
+        transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.42s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.42s cubic-bezier(0.22, 1, 0.36, 1), transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header > nav {
+        transition: padding 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header nav > a,
+      .site-sticky-header nav > div,
+      .site-sticky-header [data-mobile-nav-menu] {
+        transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header > nav > a {
+        transform-origin: left center;
+        transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), letter-spacing 0.38s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header nav > div > div:last-of-type {
+        transition: background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header--dark {
+        background-color: rgba(25, 48, 35, 0.72);
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 10px 30px rgba(18, 39, 28, 0.12);
+      }
+
+      .site-sticky-header--dark.is-scrolled {
+        background-color: rgba(25, 48, 35, 0.4);
+        border-color: rgba(255, 255, 255, 0.04);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 28px rgba(18, 39, 28, 0.08);
+        transform: translateY(-1px);
+      }
+
+      .site-sticky-header.is-scrolled > nav {
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+
+      .site-sticky-header.is-scrolled nav > a,
+      .site-sticky-header.is-scrolled nav > div {
+        opacity: 0.94;
+      }
+
+      .site-sticky-header.is-scrolled > nav > a {
+        letter-spacing: 0.045em;
+        text-shadow: 0 1px 10px rgba(255, 255, 255, 0.12);
+        transform: scale(0.985);
+      }
+
+      .site-sticky-header.is-scrolled nav > div {
+        transform: translateY(-0.5px);
+      }
+
+      .site-sticky-header.is-scrolled nav > div > div:last-of-type {
+        background-color: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.18);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 20px rgba(18, 39, 28, 0.08);
+      }
+
+      @media (max-width: 1023px) {
+        .site-sticky-header.is-scrolled > nav {
+          padding-top: 0.58rem;
+          padding-bottom: 0.58rem;
+        }
+
+        .site-sticky-header.is-scrolled [data-mobile-nav-menu] {
+          opacity: 0.96;
+        }
+      }
+
       .mobile-nav-panel {
         max-height: 0;
         overflow: hidden;
@@ -332,19 +409,8 @@
     </style>
   </head>
   <body class="has-mobile-cta bg-beige font-body text-forest antialiased selection:bg-terracotta/20">
-    <!-- Hero -->
-    <header class="relative isolate overflow-hidden">
-      <img
-        src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1800&q=80"
-        alt="Ένα άτομο που αλληλεπιδρά ήρεμα με έναν σκύλο σε εξωτερικό χώρο"
-        class="absolute inset-0 h-full w-full object-cover"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <div class="hero-overlay absolute inset-0"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-beige/90"></div>
-
-      <nav class="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
+    <div class="site-sticky-header site-sticky-header--dark sticky top-0 z-50 backdrop-blur-xl" data-sticky-header>
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
         <a href="#top" class="font-display text-lg font-semibold tracking-wide text-beige sm:text-xl">Canine Calm</a>
         <div class="flex items-center gap-2 sm:gap-3 lg:gap-8">
           <div class="hidden items-center gap-8 text-sm font-medium text-beige/90 lg:flex">
@@ -382,7 +448,7 @@
         </div>
       </nav>
 
-      <div id="mobile-nav-menu" class="mobile-nav-panel relative z-10 mx-auto max-w-7xl px-6 pb-2 lg:hidden" data-mobile-nav-menu>
+      <div id="mobile-nav-menu" class="mobile-nav-panel mx-auto max-w-7xl px-6 pb-2 lg:hidden" data-mobile-nav-menu>
         <div class="rounded-[1.75rem] border border-white/15 bg-white/10 p-3 shadow-soft backdrop-blur-md">
           <div class="grid gap-2 text-sm font-semibold text-white">
             <a href="#problems" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Προκλήσεις</a>
@@ -393,6 +459,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="relative isolate overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1800&q=80"
+        alt="Ένα άτομο που αλληλεπιδρά ήρεμα με έναν σκύλο σε εξωτερικό χώρο"
+        class="absolute inset-0 h-full w-full object-cover"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-beige/90"></div>
 
       <section id="top" class="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl items-center px-6 pb-24 pt-14 lg:px-8">
         <div class="max-w-3xl">
@@ -1198,6 +1277,30 @@
       document.querySelectorAll('#philosophy .shadow-card, #behavior-quiz, #emotion-card, #offer .shadow-card, .faq-item').forEach((element) => {
         element.classList.add('micro-lift');
       });
+
+      const stickyHeader = document.querySelector('[data-sticky-header]');
+
+      if (stickyHeader) {
+        let stickyHeaderTicking = false;
+
+        const updateStickyHeader = () => {
+          stickyHeaderTicking = false;
+          stickyHeader.classList.toggle('is-scrolled', window.scrollY > 18);
+        };
+
+        const requestStickyHeaderUpdate = () => {
+          if (stickyHeaderTicking) {
+            return;
+          }
+
+          stickyHeaderTicking = true;
+          window.requestAnimationFrame(updateStickyHeader);
+        };
+
+        updateStickyHeader();
+        window.addEventListener('scroll', requestStickyHeaderUpdate, { passive: true });
+        window.addEventListener('resize', requestStickyHeaderUpdate);
+      }
 
       const mobileNavToggle = document.querySelector('[data-mobile-nav-toggle]');
       const mobileNavMenu = document.querySelector('[data-mobile-nav-menu]');

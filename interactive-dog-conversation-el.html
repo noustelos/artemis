@@ -45,6 +45,71 @@
         color: #264333;
       }
 
+      .site-sticky-header {
+        border-bottom: 1px solid transparent;
+        -webkit-backdrop-filter: saturate(145%) blur(18px);
+        backdrop-filter: saturate(145%) blur(18px);
+        will-change: background-color, border-color, box-shadow, padding, transform;
+        transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.42s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.42s cubic-bezier(0.22, 1, 0.36, 1), padding 0.42s cubic-bezier(0.22, 1, 0.36, 1), transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header nav > a,
+      .site-sticky-header nav > div {
+        transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header > nav > a {
+        transform-origin: left center;
+        transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), letter-spacing 0.38s cubic-bezier(0.22, 1, 0.36, 1), color 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header nav > div > div:last-of-type {
+        transition: background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-sticky-header--light {
+        background-color: rgba(245, 242, 235, 0.74);
+        border-color: rgba(31, 61, 43, 0.1);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 26px rgba(31, 61, 43, 0.08);
+      }
+
+      .site-sticky-header--light.is-scrolled {
+        background-color: rgba(245, 242, 235, 0.44);
+        border-color: rgba(31, 61, 43, 0.04);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 24px rgba(31, 61, 43, 0.06);
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+        transform: translateY(-1px);
+      }
+
+      .site-sticky-header.is-scrolled nav > a,
+      .site-sticky-header.is-scrolled nav > div {
+        opacity: 0.95;
+      }
+
+      .site-sticky-header.is-scrolled > nav > a {
+        letter-spacing: 0.03em;
+        color: #1f3d2b;
+        transform: scale(0.985);
+      }
+
+      .site-sticky-header.is-scrolled nav > div {
+        transform: translateY(-0.5px);
+      }
+
+      .site-sticky-header.is-scrolled nav > div > div:last-of-type {
+        background-color: rgba(255, 255, 255, 0.56);
+        border-color: rgba(31, 61, 43, 0.14);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 20px rgba(31, 61, 43, 0.06);
+      }
+
+      @media (max-width: 1023px) {
+        .site-sticky-header--light.is-scrolled {
+          padding-top: 0.72rem;
+          padding-bottom: 0.72rem;
+        }
+      }
+
       .breath-field {
         position: fixed;
         inset: 0;
@@ -212,7 +277,7 @@
     </div>
 
     <div class="relative z-10">
-      <header class="px-6 py-6 lg:px-8">
+      <header class="site-sticky-header site-sticky-header--light sticky top-0 z-50 px-6 py-6 backdrop-blur-md lg:px-8" data-sticky-header>
         <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4">
           <a href="greek.html" class="font-display text-xl font-semibold tracking-wide text-forest">Canine Calm</a>
           <div class="flex items-center gap-3 sm:gap-4">
@@ -359,6 +424,29 @@
       const progressFill = document.getElementById('progress-fill');
       const stepHeading = document.getElementById('step-heading');
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const stickyHeader = document.querySelector('[data-sticky-header]');
+
+      if (stickyHeader) {
+        let stickyHeaderTicking = false;
+
+        const updateStickyHeader = () => {
+          stickyHeaderTicking = false;
+          stickyHeader.classList.toggle('is-scrolled', window.scrollY > 18);
+        };
+
+        const requestStickyHeaderUpdate = () => {
+          if (stickyHeaderTicking) {
+            return;
+          }
+
+          stickyHeaderTicking = true;
+          window.requestAnimationFrame(updateStickyHeader);
+        };
+
+        updateStickyHeader();
+        window.addEventListener('scroll', requestStickyHeaderUpdate, { passive: true });
+        window.addEventListener('resize', requestStickyHeaderUpdate);
+      }
 
       const steps = ['question', 'activation', 'environment', 'observation', 'reset', 'story', 'result'];
 
