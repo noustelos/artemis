@@ -60,6 +60,30 @@
         transition: padding 0.42s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
+      .site-section-link {
+        border-radius: 9999px;
+        padding: 0.45rem 0.78rem;
+        color: rgba(245, 242, 235, 0.82);
+        transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-section-link:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .site-section-link.is-active {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.16);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 18px rgba(18, 39, 28, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .site-mobile-section-link.is-active {
+        background-color: rgba(255, 255, 255, 0.16);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 18px rgba(18, 39, 28, 0.1);
+      }
+
       .site-sticky-header nav > a,
       .site-sticky-header nav > div,
       .site-sticky-header [data-mobile-nav-menu] {
@@ -112,6 +136,11 @@
         background-color: rgba(255, 255, 255, 0.14);
         border-color: rgba(255, 255, 255, 0.18);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 20px rgba(18, 39, 28, 0.08);
+      }
+
+      .site-sticky-header.is-scrolled .site-section-link.is-active {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 22px rgba(18, 39, 28, 0.08);
       }
 
       @media (max-width: 1023px) {
@@ -415,10 +444,10 @@
         <a href="#top" class="font-display text-lg font-semibold tracking-wide text-beige sm:text-xl">Canine Calm</a>
         <div class="flex items-center gap-2 sm:gap-3 lg:gap-8">
           <div class="hidden items-center gap-8 text-sm font-medium text-beige/90 lg:flex">
-          <a href="#problems" class="transition hover:text-white">Problems</a>
-          <a href="#philosophy" class="transition hover:text-white">Philosophy</a>
-          <a href="#products" class="transition hover:text-white">Products</a>
-          <a href="#faq" class="transition hover:text-white">FAQ</a>
+          <a href="#problems" class="site-section-link" data-section-nav-link="problems">Problems</a>
+          <a href="#philosophy" class="site-section-link" data-section-nav-link="philosophy">Philosophy</a>
+          <a href="#products" class="site-section-link" data-section-nav-link="products">Products</a>
+          <a href="#faq" class="site-section-link" data-section-nav-link="faq">FAQ</a>
           </div>
           <a
             href="interactive-dog-conversation.html"
@@ -452,11 +481,11 @@
       <div id="mobile-nav-menu" class="mobile-nav-panel mx-auto max-w-7xl px-6 pb-2 lg:hidden" data-mobile-nav-menu>
         <div class="rounded-[1.75rem] border border-white/15 bg-white/10 p-3 shadow-soft backdrop-blur-md">
           <div class="grid gap-2 text-sm font-semibold text-white">
-            <a href="#problems" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Problems</a>
-            <a href="#philosophy" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Philosophy</a>
-            <a href="#products" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Products</a>
+            <a href="#problems" class="site-mobile-section-link rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link data-section-nav-link="problems">Problems</a>
+            <a href="#philosophy" class="site-mobile-section-link rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link data-section-nav-link="philosophy">Philosophy</a>
+            <a href="#products" class="site-mobile-section-link rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link data-section-nav-link="products">Products</a>
             <a href="interactive-dog-conversation.html" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>Interactive Experience</a>
-            <a href="#faq" class="rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link>FAQ</a>
+            <a href="#faq" class="site-mobile-section-link rounded-2xl px-4 py-3 transition hover:bg-white/10" data-mobile-nav-link data-section-nav-link="faq">FAQ</a>
           </div>
         </div>
       </div>
@@ -1280,6 +1309,41 @@
       });
 
       const stickyHeader = document.querySelector('[data-sticky-header]');
+      const sectionNavLinks = Array.from(document.querySelectorAll('[data-section-nav-link]'));
+      const sectionNavTargets = Array.from(new Set(sectionNavLinks.map((link) => link.dataset.sectionNavLink)))
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      const setActiveSectionNav = (activeId) => {
+        sectionNavLinks.forEach((link) => {
+          const isActive = link.dataset.sectionNavLink === activeId;
+          link.classList.toggle('is-active', isActive);
+
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+            return;
+          }
+
+          link.removeAttribute('aria-current');
+        });
+      };
+
+      const updateSectionNavState = () => {
+        if (!sectionNavTargets.length) {
+          return;
+        }
+
+        const headerOffset = (stickyHeader ? stickyHeader.offsetHeight : 0) + 28;
+        let activeId = null;
+
+        sectionNavTargets.forEach((section) => {
+          if (section.getBoundingClientRect().top <= headerOffset) {
+            activeId = section.id;
+          }
+        });
+
+        setActiveSectionNav(activeId);
+      };
 
       if (stickyHeader) {
         let stickyHeaderTicking = false;
@@ -1287,6 +1351,7 @@
         const updateStickyHeader = () => {
           stickyHeaderTicking = false;
           stickyHeader.classList.toggle('is-scrolled', window.scrollY > 18);
+          updateSectionNavState();
         };
 
         const requestStickyHeaderUpdate = () => {
@@ -1301,6 +1366,10 @@
         updateStickyHeader();
         window.addEventListener('scroll', requestStickyHeaderUpdate, { passive: true });
         window.addEventListener('resize', requestStickyHeaderUpdate);
+      } else {
+        updateSectionNavState();
+        window.addEventListener('scroll', updateSectionNavState, { passive: true });
+        window.addEventListener('resize', updateSectionNavState);
       }
 
       const mobileNavToggle = document.querySelector('[data-mobile-nav-toggle]');
