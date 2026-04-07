@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">DogWithin icon</title>
+  <desc id="desc">App icon for DogWithin and The 7 Day Nervous System Reset for Dogs.</desc>
+  <rect width="512" height="512" rx="120" fill="#FFFFFF"/>
+  <rect x="28" y="28" width="456" height="456" rx="104" fill="#F8FEFE" stroke="#D9F8F7" stroke-width="8"/>
+  <circle cx="256" cy="198" r="92" fill="#00E1DE" fill-opacity="0.18"/>
+  <circle cx="256" cy="198" r="56" fill="#00E1DE"/>
+  <rect x="148" y="314" width="216" height="52" rx="26" fill="#FFD84D"/>
+  <path d="M168 238C168 185 205 146 256 146C307 146 344 185 344 238V276C344 329 307 366 256 366C205 366 168 329 168 276V238Z" stroke="#000000" stroke-width="18"/>
+  <path d="M206 276C206 307 227 328 256 328C285 328 306 307 306 276" stroke="#000000" stroke-width="18" stroke-linecap="round"/>
+</svg>

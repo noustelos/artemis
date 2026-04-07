@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /.git/
+Disallow: /.pdfread-venv/
+Disallow: /pdf/
+
+Sitemap: https://www.dogwithin.com/sitemap.xml

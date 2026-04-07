@@ -2,18 +2,66 @@
 <html lang="no" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Samtale med hunden din: en rolig interaktiv opplevelse om atferd som uttrykk for nervesystemet."
+      content="En rolig interaktiv opplevelse om hundeatferd, stress, restitusjon, miljø og nervesystemet bak The 7 Day Nervous System Reset for Dogs, særlig for reaktive og overbelastede hunder."
     />
-    <title>Samtale Med Hunden Din | dogwithin.com</title>
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="theme-color" content="#f5f2eb" />
+    <meta name="application-name" content="DogWithin" />
+    <meta name="apple-mobile-web-app-title" content="DogWithin" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>Hundeatferd og Nervesystem | DogWithin</title>
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="canonical" href="https://www.dogwithin.com/interaktiv-hundesamtale.html" />
+    <link rel="alternate" hreflang="en" href="https://www.dogwithin.com/interactive-dog-conversation.html" />
+    <link rel="alternate" hreflang="el" href="https://www.dogwithin.com/interactive-dog-conversation-el.html" />
+    <link rel="alternate" hreflang="no" href="https://www.dogwithin.com/interaktiv-hundesamtale.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.dogwithin.com/interactive-dog-conversation.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DogWithin" />
+    <meta property="og:locale" content="no_NO" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="el_GR" />
+    <meta property="og:title" content="Hundeatferd og Nervesystem | DogWithin" />
+    <meta property="og:description" content="Utforsk en rolig interaktiv opplevelse om hundeatferd, stress, restitusjon, miljø, observasjon og The 7 Day Nervous System Reset for Dogs for reaktive og overbelastede hunder." />
+    <meta property="og:url" content="https://www.dogwithin.com/interaktiv-hundesamtale.html" />
+    <meta property="og:image" content="https://www.dogwithin.com/assets/og/dogwithin-conversation-social.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Interaktiv guide om hundeatferd og nervesystem fra DogWithin." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Hundeatferd og Nervesystem | DogWithin" />
+    <meta name="twitter:description" content="Utforsk en rolig interaktiv opplevelse om hundeatferd, stress, restitusjon, miljø, observasjon og The 7 Day Nervous System Reset for Dogs for reaktive og overbelastede hunder." />
+    <meta name="twitter:image" content="https://www.dogwithin.com/assets/og/dogwithin-conversation-social.png" />
+    <meta name="twitter:image:alt" content="Interaktiv guide om hundeatferd og nervesystem fra DogWithin." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Hundeatferd og Nervesystem | DogWithin",
+        "url": "https://www.dogwithin.com/interaktiv-hundesamtale.html",
+        "description": "En rolig interaktiv opplevelse om hundeatferd, stress, restitusjon, miljø og nervesystemet bak The 7 Day Nervous System Reset for Dogs for reaktive og overbelastede hunder.",
+        "inLanguage": "no",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "DogWithin",
+          "url": "https://www.dogwithin.com/"
+        }
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -39,18 +87,39 @@
       };
     </script>
     <style>
+      html {
+        min-height: 100%;
+        -webkit-text-size-adjust: 100%;
+        overflow-x: hidden;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
         background: #f5f2eb;
         color: #264333;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow-x: hidden;
       }
 
       .site-sticky-header {
         border-bottom: 1px solid transparent;
+        padding-top: env(safe-area-inset-top);
         -webkit-backdrop-filter: saturate(145%) blur(18px);
         backdrop-filter: saturate(145%) blur(18px);
         will-change: background-color, border-color, box-shadow, padding, transform;
         transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.42s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.42s cubic-bezier(0.22, 1, 0.36, 1), padding 0.42s cubic-bezier(0.22, 1, 0.36, 1), transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .intro-viewport {
+        min-height: calc(100vh - 6rem);
+        min-height: calc(100svh - 6rem - env(safe-area-inset-top));
+      }
+
+      @supports (height: 100dvh) {
+        .intro-viewport {
+          min-height: calc(100dvh - 6rem - env(safe-area-inset-top));
+        }
       }
 
       .site-sticky-header nav > a,
@@ -282,7 +351,7 @@
           <a href="https://www.dogwithin.com/" class="font-display text-xl font-semibold tracking-wide text-forest">dogwithin.com</a>
           <div class="flex items-center gap-3 sm:gap-4">
             <a
-              href="norwegian.html"
+              href="norwegian.html#access"
               class="hidden rounded-full border border-forest/10 bg-white/70 px-4 py-2 text-sm font-semibold text-forest transition hover:border-forest/20 hover:bg-white sm:inline-flex"
             >
               Tilbake til guiden
@@ -297,12 +366,12 @@
       </header>
 
       <main>
-        <section id="intro" class="mx-auto flex min-h-[calc(100vh-6rem)] max-w-6xl items-center px-6 pb-16 pt-8 lg:px-8 lg:pb-24">
+        <section id="intro" class="intro-viewport mx-auto flex max-w-6xl items-center px-6 pb-16 pt-8 lg:px-8 lg:pb-24">
           <div class="max-w-4xl">
             <p class="text-sm font-semibold uppercase tracking-[0.28em] text-terracotta">Ethical dog training and care</p>
             <p class="mt-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-forest/48">Listen With Your Eyes™</p>
             <h1 class="mt-6 max-w-[12ch] font-display text-5xl leading-[1.02] text-forest sm:text-6xl lg:text-7xl">
-              Hva Opplever Hunden Din?
+              Hva Opplever Hundens Nervesystem?
             </h1>
             <p class="mt-8 max-w-2xl text-lg leading-8 text-forest/74 sm:text-xl">
               Mange atferdsproblemer er ikke treningsproblemer. De er signaler fra nervesystemet.
@@ -316,7 +385,7 @@
                 Begynn samtalen
               </button>
               <p class="max-w-md text-sm leading-7 text-forest/58">
-                En rolig, reflekterende gjennomgang av aktivering, restitusjon, miljø og de tidlige signalene som kommer før atferden.
+                En rolig, reflekterende gjennomgang av stress, restitusjon, miljø, observasjon og de første prinsippene i 7 Day Nervous System Reset.
               </p>
             </div>
           </div>
@@ -326,7 +395,7 @@
           <div class="mx-auto max-w-3xl text-center">
             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Samtale Med Hunden Din</p>
             <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl">
-              En rolig dialog med nervesystemet under atferden.
+              En rolig dialog med nervesystemet bak hundens atferd.
             </h2>
           </div>
 
@@ -359,17 +428,17 @@
               <div>
                 <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Neste steg</p>
                 <h2 class="mt-4 max-w-[12ch] font-display text-4xl leading-[1.06] text-forest sm:text-5xl">
-                  Utforsk 7 Day Reset-guiden
+                  Se de 7 kapitlene i guiden om hundens nervesystem
                 </h2>
                 <p class="mt-6 max-w-xl text-lg leading-8 text-forest/74">
-                  Hvis hunden din ser ut til å leve for tett på aktivering, tilbyr guiden en langsommere struktur: mindre press, mer restitusjon, tydeligere observasjon og en roligere hverdagsrytme.
+                  Dette er en praktisk guide til regulering av nervesystemet hos hunder. Den forklarer hvorfor stress betyr mer enn trening, hvorfor restitusjon og miljø endrer atferd, og hvordan du forbereder en reell sju dagers reset.
                 </p>
                 <div class="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href="norwegian.html#offer"
+                    href="norwegian.html#access"
                     class="inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
                   >
-                    Få 7 Day Reset-guiden
+                    Get Instant Access
                   </a>
                   <a
                     href="norwegian.html"
@@ -383,10 +452,10 @@
               <div class="rounded-[2rem] bg-sand/55 p-7 shadow-card sm:p-8">
                 <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Inne i guiden</p>
                 <ul class="mt-6 space-y-4 text-lg leading-8 text-forest/78">
-                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Forstå hvordan kronisk stimulering holder nervesystemet i alarm.</span></li>
-                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Reduser belastning gjennom roligere rutiner, langsommere turer og beskyttet hvile.</span></li>
-                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Se signalene som kommer før bjeffing, trekking, stirring eller uro.</span></li>
-                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Følg en 7-dagers struktur som fokuserer på regulering før mer treningspress.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Forstå stress hos hunder og hvorfor atferd ofte er et synlig uttrykk for nervesystemet.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Se hvorfor restitusjon er et biologisk behov, ikke bare et ekstra gode.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Forstå hvordan miljø og små daglige belastninger kan holde systemet stille aktivert.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Gå fra regulering og observasjon til forberedelse og en virkelig 7-dagers reset.</span></li>
                 </ul>
               </div>
             </div>
@@ -728,13 +797,14 @@
               <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Reseten</p>
               <h4 class="mt-3 font-display text-3xl leading-[1.1] text-forest">7 Day Nervous System Reset</h4>
               <p class="mt-4 max-w-2xl leading-8 text-forest/74">
-                I stedet for å lære nye kommandoer, fokuserer reseten på:
+                I stedet for å lære nye kommandoer, fokuserer reseten på å redusere stimulering og skape betingelser for restitusjon:
               </p>
               <ul class="mt-6 space-y-3 text-lg leading-8 text-forest/76">
                 <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Å senke den daglige rytmen</span></li>
                 <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Å beskytte hvile</span></li>
                 <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Varsom utforskning</span></li>
-                <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Observasjon</span></li>
+                <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Å se triggere og tidlige signaler tidligere</span></li>
+                <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Å legge merke til de små endringene</span></li>
               </ul>
             </div>
 
@@ -754,7 +824,8 @@
             <div class="mt-8 space-y-4 text-lg leading-8 text-forest/74">
               <p class="story-line">Rolige turer.</p>
               <p class="story-line">Lengre snusing.</p>
-              <p class="story-line">Mer hvile.</p>
+              <p class="story-line">Beskyttet hvile.</p>
+              <p class="story-line">Varsom utforskning.</p>
               <p class="story-line">Mindre avbrytelser.</p>
             </div>
             <p class="story-line mt-8 max-w-2xl leading-8 text-forest/70">
@@ -782,7 +853,7 @@
                 id="result-cta"
                 class="inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
               >
-                Utforsk 7 Day Reset-guiden
+                Get Instant Access
               </button>
               <button
                 type="button"
