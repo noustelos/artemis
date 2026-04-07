@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="no" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Samtale med hunden din: en rolig interaktiv opplevelse om atferd som uttrykk for nervesystemet."
+    />
+    <title>Samtale Med Hunden Din | Canine Calm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: '#1F3D2B',
+              beige: '#F5F2EB',
+              sand: '#E7E0D6',
+              terracotta: '#C76D4A',
+              moss: '#97A78F',
+            },
+            fontFamily: {
+              display: ['Playfair Display', 'serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              soft: '0 24px 70px rgba(31, 61, 43, 0.10)',
+              card: '0 16px 40px rgba(31, 61, 43, 0.08)',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f5f2eb;
+        color: #264333;
+      }
+
+      .breath-field {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .breath-orb {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(42px);
+        opacity: 0.34;
+        animation: breathe 16s ease-in-out infinite;
+      }
+
+      .breath-orb--one {
+        top: 10%;
+        left: 5%;
+        height: 18rem;
+        width: 18rem;
+        background: rgba(151, 167, 143, 0.42);
+      }
+
+      .breath-orb--two {
+        top: 46%;
+        right: 4%;
+        height: 24rem;
+        width: 24rem;
+        background: rgba(231, 224, 214, 0.82);
+        animation-delay: 2.6s;
+        animation-duration: 19s;
+      }
+
+      .breath-orb--three {
+        bottom: -4rem;
+        left: 28%;
+        height: 20rem;
+        width: 20rem;
+        background: rgba(199, 109, 74, 0.14);
+        animation-delay: 5s;
+        animation-duration: 17s;
+      }
+
+      .reveal-section {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.82s ease, transform 0.82s ease;
+      }
+
+      .reveal-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .dialogue-panel {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.32s ease, transform 0.32s ease;
+      }
+
+      .dialogue-panel.is-leaving,
+      .dialogue-panel.is-entering {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      .option-button {
+        width: 100%;
+        border: 1px solid rgba(31, 61, 43, 0.12);
+        background: rgba(255, 255, 255, 0.82);
+        color: #264333;
+        transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+      }
+
+      .option-button:hover {
+        transform: translateY(-2px);
+        border-color: rgba(199, 109, 74, 0.42);
+        box-shadow: 0 16px 34px rgba(31, 61, 43, 0.08);
+      }
+
+      .option-button.is-selected {
+        border-color: #1f3d2b;
+        background: #1f3d2b;
+        color: #f5f2eb;
+        box-shadow: 0 18px 38px rgba(31, 61, 43, 0.14);
+      }
+
+      .balance-side {
+        border: 1px solid rgba(31, 61, 43, 0.08);
+        transition: transform 0.28s ease, background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      }
+
+      .balance-side.is-emphasized {
+        transform: translateY(-2px);
+        border-color: rgba(31, 61, 43, 0.14);
+        background: #1f3d2b;
+        color: #f5f2eb;
+        box-shadow: 0 18px 38px rgba(31, 61, 43, 0.14);
+      }
+
+      .balance-side.is-softened {
+        opacity: 0.64;
+      }
+
+      .balance-slider {
+        accent-color: #c76d4a;
+      }
+
+      .story-line {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .story-line.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .gentle-float {
+        animation: iconFloat 6.5s ease-in-out infinite;
+      }
+
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) scale(0.94);
+          opacity: 0.18;
+        }
+
+        50% {
+          transform: translate3d(0, -16px, 0) scale(1.08);
+          opacity: 0.38;
+        }
+      }
+
+      @keyframes iconFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-beige font-body text-forest antialiased selection:bg-terracotta/20">
+    <div class="breath-field" aria-hidden="true">
+      <div class="breath-orb breath-orb--one"></div>
+      <div class="breath-orb breath-orb--two"></div>
+      <div class="breath-orb breath-orb--three"></div>
+    </div>
+
+    <div class="relative z-10">
+      <header class="px-6 py-6 lg:px-8">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4">
+          <a href="norwegian.html" class="font-display text-xl font-semibold tracking-wide text-forest">Canine Calm</a>
+          <div class="flex items-center gap-3 sm:gap-4">
+            <a
+              href="norwegian.html"
+              class="hidden rounded-full border border-forest/10 bg-white/70 px-4 py-2 text-sm font-semibold text-forest transition hover:border-forest/20 hover:bg-white sm:inline-flex"
+            >
+              Tilbake til guiden
+            </a>
+            <div class="flex items-center gap-1.5 rounded-full border border-forest/10 bg-white/70 p-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-forest shadow-card backdrop-blur-sm sm:text-xs">
+              <a href="interactive-dog-conversation.html" class="rounded-full px-2.5 py-2 text-forest/70 transition hover:text-forest sm:px-3">EN</a>
+              <a href="interaktiv-hundesamtale.html" aria-current="page" class="rounded-full bg-forest px-2.5 py-2 text-beige sm:px-3">NO</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section id="intro" class="mx-auto flex min-h-[calc(100vh-6rem)] max-w-6xl items-center px-6 pb-16 pt-8 lg:px-8 lg:pb-24">
+          <div class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-terracotta">Interaktiv opplevelse</p>
+            <h1 class="mt-6 max-w-[12ch] font-display text-5xl leading-[1.02] text-forest sm:text-6xl lg:text-7xl">
+              Hva Opplever Hunden Din?
+            </h1>
+            <p class="mt-8 max-w-2xl text-lg leading-8 text-forest/74 sm:text-xl">
+              Mange atferdsproblemer er ikke treningsproblemer. De er signaler fra nervesystemet.
+            </p>
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <button
+                type="button"
+                data-start-conversation
+                class="inline-flex items-center justify-center rounded-full bg-forest px-8 py-4 text-base font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+              >
+                Begynn samtalen
+              </button>
+              <p class="max-w-md text-sm leading-7 text-forest/58">
+                En rolig, reflekterende gjennomgang av aktivering, restitusjon, miljø og de tidlige signalene som kommer før atferden.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="conversation" class="reveal-section mx-auto max-w-5xl px-6 pb-20 lg:px-8 lg:pb-24">
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Samtale Med Hunden Din</p>
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl">
+              En rolig dialog med nervesystemet under atferden.
+            </h2>
+          </div>
+
+          <div class="mt-10 overflow-hidden rounded-[2.5rem] border border-white/60 bg-white/78 p-6 shadow-soft backdrop-blur-md sm:p-8 lg:p-10">
+            <div class="flex flex-col gap-4 border-b border-forest/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p id="progress-label" class="text-sm font-semibold uppercase tracking-[0.22em] text-terracotta">Venter på å begynne</p>
+                <h3 id="step-heading" class="mt-3 max-w-[16ch] font-display text-3xl leading-[1.08] text-forest sm:text-4xl">
+                  Samtalen begynner med observasjon.
+                </h3>
+              </div>
+              <div class="w-full max-w-xs">
+                <div class="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.18em] text-forest/46 sm:text-xs">
+                  <span>Pause</span>
+                  <span>Lytt</span>
+                </div>
+                <div class="mt-2 h-2 overflow-hidden rounded-full bg-sand/80">
+                  <div id="progress-fill" class="h-full rounded-full bg-gradient-to-r from-moss via-terracotta to-forest transition-all duration-500" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="conversation-panel" class="dialogue-panel mt-8" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section id="guide" class="reveal-section mx-auto max-w-6xl px-6 pb-24 lg:px-8">
+          <div class="overflow-hidden rounded-[2.5rem] border border-forest/10 bg-white/72 shadow-soft backdrop-blur-sm">
+            <div class="grid gap-10 px-8 py-10 lg:grid-cols-[0.95fr_1.05fr] lg:px-12 lg:py-12">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Neste steg</p>
+                <h2 class="mt-4 max-w-[12ch] font-display text-4xl leading-[1.06] text-forest sm:text-5xl">
+                  Utforsk 7 Day Reset-guiden
+                </h2>
+                <p class="mt-6 max-w-xl text-lg leading-8 text-forest/74">
+                  Hvis hunden din ser ut til å leve for tett på aktivering, tilbyr guiden en langsommere struktur: mindre press, mer restitusjon, tydeligere observasjon og en roligere hverdagsrytme.
+                </p>
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href="norwegian.html#offer"
+                    class="inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+                  >
+                    Få 7 Day Reset-guiden
+                  </a>
+                  <a
+                    href="norwegian.html"
+                    class="inline-flex items-center justify-center rounded-full border border-forest/12 bg-white px-7 py-3.5 font-semibold text-forest transition duration-300 hover:border-forest/25"
+                  >
+                    Tilbake til hovedsiden
+                  </a>
+                </div>
+              </div>
+
+              <div class="rounded-[2rem] bg-sand/55 p-7 shadow-card sm:p-8">
+                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Inne i guiden</p>
+                <ul class="mt-6 space-y-4 text-lg leading-8 text-forest/78">
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Forstå hvordan kronisk stimulering holder nervesystemet i alarm.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Reduser belastning gjennom roligere rutiner, langsommere turer og beskyttet hvile.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Se signalene som kommer før bjeffing, trekking, stirring eller uro.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Følg en 7-dagers struktur som fokuserer på regulering før mer treningspress.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-forest/10 bg-white/60 px-6 py-8 text-center backdrop-blur-sm lg:px-8">
+        <p class="text-sm leading-7 text-forest/70">
+          Designed by <a href="https://noustelos.gr" target="_blank" rel="noreferrer" class="font-semibold text-forest transition hover:text-terracotta">NOUSTELOS_STUDIO</a> /&gt; 2026 &copy; all rights reserved
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16 }
+      );
+
+      document.querySelectorAll('.reveal-section').forEach((section) => {
+        revealObserver.observe(section);
+      });
+
+      const conversationSection = document.getElementById('conversation');
+      const guideSection = document.getElementById('guide');
+      const conversationPanel = document.getElementById('conversation-panel');
+      const progressLabel = document.getElementById('progress-label');
+      const progressFill = document.getElementById('progress-fill');
+      const stepHeading = document.getElementById('step-heading');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const steps = ['question', 'activation', 'environment', 'observation', 'reset', 'story', 'result'];
+
+      const stepMeta = {
+        question: { label: 'Steg 1 av 7', heading: 'Når reagerer hunden din mest?' },
+        activation: { label: 'Steg 2 av 7', heading: 'Aktivering og restitusjon former hele bildet.' },
+        environment: { label: 'Steg 3 av 7', heading: 'Miljøet kan fylle nervesystemet stille.' },
+        observation: { label: 'Steg 4 av 7', heading: 'De tidlige signalene kommer ofte før reaksjonen.' },
+        reset: { label: 'Steg 5 av 7', heading: 'Reseten endrer rytmen før den legger på mer press.' },
+        story: { label: 'Steg 6 av 7', heading: 'Se for deg en uke der alt går langsommere.' },
+        result: { label: 'Steg 7 av 7', heading: 'Hunden din trenger kanskje ikke mer trening.' },
+      };
+
+      const state = {
+        currentStep: null,
+        balance: 58,
+        answers: {
+          trigger: '',
+          environment: '',
+          signal: '',
+        },
+        storyTimers: [],
+      };
+
+      const triggerLabels = {
+        leaving: 'når separasjon og fravær skaper den sterkeste reaksjonen',
+        walks: 'når rytmen ute allerede blir for full på tur',
+        dogs: 'når synet av andre hunder skyver kroppen inn i rask aktivering',
+        noise: 'når lyd og bevegelse i lag raskt overbelaster systemet',
+        restless: 'når kroppen ser ut til å forbli aktivert store deler av dagen',
+      };
+
+      const environmentLabels = {
+        urban: 'et veldig travelt bymiljø',
+        moderate: 'en moderat stimulerende hverdagsrytme',
+        calm: 'et roligere miljø som likevel kan samle skjult belastning',
+      };
+
+      const signalLabels = {
+        tension: 'spenning i kroppen',
+        pause: 'en plutselig pause',
+        breathing: 'raskere pust',
+        staring: 'intens stirring',
+      };
+
+      const getBalanceState = () => {
+        if (state.balance >= 60) {
+          return {
+            summary: 'Systemet heller mot aktivering. Reaktivitet, bjeffing og uro blir mer sannsynlig når restitusjonen blir for kort.',
+            activeSide: 'activation',
+          };
+        }
+
+        if (state.balance <= 40) {
+          return {
+            summary: 'Systemet heller mot restitusjon. Rolig utforskning, bedre søvn og mer stabile emosjoner blir lettere å opprettholde.',
+            activeSide: 'recovery',
+          };
+        }
+
+        return {
+          summary: 'Systemet ligger mellom aktivering og restitusjon. Smale hverdagsinntrykk kan fortsatt vippe kroppen i begge retninger, avhengig av rytme og hvile.',
+          activeSide: 'balanced',
+        };
+      };
+
+      const getResultMessage = () => {
+        const triggerText = triggerLabels[state.answers.trigger] || 'når hunden bærer mer aktivering enn den klarer å hente seg inn fra';
+        const environmentText = environmentLabels[state.answers.environment] || 'et hverdagsmiljø der små stimuli fortsetter å hope seg opp';
+        const signalText = signalLabels[state.answers.signal] || 'tidlige signaler som kommer for atferden eskalerer';
+
+        return 'Mange hunder trenger ganske enkelt restitusjon, langsommere rytme og et roligere miljø. Svarene dine tyder på et nervesystem som reagerer sterkest ' + triggerText + ', innenfor ' + environmentText + ', samtidig som det viser ' + signalText + ' før den store reaksjonen kommer.';
+      };
+
+      const clearStoryTimers = () => {
+        state.storyTimers.forEach((timer) => window.clearTimeout(timer));
+        state.storyTimers = [];
+      };
+
+      const updateHeader = () => {
+        if (!state.currentStep) {
+          progressLabel.textContent = 'Venter på å begynne';
+          progressFill.style.width = '0%';
+          stepHeading.textContent = 'Samtalen begynner med observasjon.';
+          return;
+        }
+
+        const stepIndex = steps.indexOf(state.currentStep);
+        const meta = stepMeta[state.currentStep];
+        progressLabel.textContent = meta.label;
+        progressFill.style.width = ((stepIndex + 1) / steps.length) * 100 + '%';
+        stepHeading.textContent = meta.heading;
+      };
+
+      const renderBalanceState = () => {
+        const slider = document.getElementById('balance-slider');
+        const activationCard = document.getElementById('balance-activation');
+        const recoveryCard = document.getElementById('balance-recovery');
+        const summary = document.getElementById('balance-summary');
+
+        if (!slider || !activationCard || !recoveryCard || !summary) {
+          return;
+        }
+
+        const balanceState = getBalanceState();
+        const fillPercentage = state.balance;
+        slider.style.background = 'linear-gradient(90deg, rgba(151, 167, 143, 0.55) 0%, rgba(151, 167, 143, 0.55) ' + (100 - fillPercentage) + '%, rgba(199, 109, 74, 0.5) ' + (100 - fillPercentage) + '%, rgba(199, 109, 74, 0.5) 100%)';
+        summary.textContent = balanceState.summary;
+
+        activationCard.classList.toggle('is-emphasized', balanceState.activeSide === 'activation');
+        activationCard.classList.toggle('is-softened', balanceState.activeSide === 'recovery');
+        recoveryCard.classList.toggle('is-emphasized', balanceState.activeSide === 'recovery');
+        recoveryCard.classList.toggle('is-softened', balanceState.activeSide === 'activation');
+      };
+
+      const stepTemplates = {
+        placeholder: () => `
+          <div class="rounded-[2rem] bg-sand/46 p-7 text-center shadow-card sm:p-8">
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-[1.75rem] bg-white text-terracotta shadow-card gentle-float">
+              <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20c4.4 0 8-3.2 8-7.3S16.4 5.5 12 5.5 4 8.6 4 12.7 7.6 20 12 20Z"/><path d="M9 10h.01M15 10h.01" stroke-linecap="round"/><path d="M9.5 14.5c.7-.9 1.6-1.3 2.5-1.3s1.8.4 2.5 1.3" stroke-linecap="round"/></svg>
+            </div>
+            <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-forest/72">
+              Denne opplevelsen skal kjennes som en pause. Ikke en test. Ikke en rask vurdering. Bare en langsommere måte å lytte til hva hundens kropp kanskje forsøker å fortelle.
+            </p>
+            <button
+              type="button"
+              data-start-conversation
+              class="mt-8 inline-flex items-center justify-center rounded-full bg-forest px-8 py-4 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+            >
+              Begynn samtalen
+            </button>
+          </div>
+        `,
+        question: () => `
+          <div class="space-y-6">
+            <p class="max-w-2xl text-lg leading-8 text-forest/74">
+              Velg situasjonen der hundens kropp ser ut til å ha minst plass igjen til rolig restitusjon.
+            </p>
+            <div class="grid gap-3">
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-trigger-option="leaving">Når jeg går hjemmefra</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-trigger-option="walks">På tur</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-trigger-option="dogs">Når andre hunder dukker opp</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-trigger-option="noise">Når miljøet er støyende</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-trigger-option="restless">Hunden min er konstant urolig</button>
+            </div>
+          </div>
+        `,
+        activation: () => `
+          <div class="space-y-6">
+            <div class="rounded-[2rem] bg-sand/52 p-6 shadow-card sm:p-7">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Forklaring på nervesystemet</p>
+              <h4 class="mt-3 font-display text-3xl leading-[1.12] text-forest">Hunden din kan oppleve et nervesystem som holder seg aktivert over lange perioder.</h4>
+              <p class="mt-4 max-w-2xl leading-8 text-forest/74">
+                Når stimulering fortsetter uten tilstrekkelig restitusjon, blir nervesystemet værende i beredskap.
+              </p>
+              <div class="mt-6 rounded-[1.5rem] border border-forest/8 bg-white/72 px-5 py-4">
+                <div class="flex items-center justify-between gap-4 text-sm font-semibold uppercase tracking-[0.18em] text-forest/50">
+                  <span>Aktivering</span>
+                  <span class="text-terracotta gentle-float">&harr;</span>
+                  <span>Restitusjon</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-[2rem] border border-forest/8 bg-white/74 p-6 shadow-card sm:p-7">
+              <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Nervesystembalanse</p>
+                  <p class="mt-2 max-w-xl leading-8 text-forest/70">
+                    Flytt slideren og merk hvordan atferden forandrer seg når systemet glir mot aktivering eller restitusjon.
+                  </p>
+                </div>
+                <p class="text-sm font-medium text-forest/50">Flytt rolig mellom begge tilstander.</p>
+              </div>
+
+              <div class="mt-6 grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+                <div id="balance-recovery" class="balance-side rounded-[1.5rem] bg-beige p-5">
+                  <p class="text-sm font-semibold uppercase tracking-[0.18em]">Restitusjon</p>
+                  <ul class="mt-4 space-y-2 leading-7">
+                    <li>Rolig utforskning</li>
+                    <li>Bedre søvn</li>
+                    <li>Stabile emosjoner</li>
+                  </ul>
+                </div>
+                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-sand text-terracotta gentle-float">
+                  <span class="text-xl">&harr;</span>
+                </div>
+                <div id="balance-activation" class="balance-side rounded-[1.5rem] bg-beige p-5">
+                  <p class="text-sm font-semibold uppercase tracking-[0.18em]">Aktivering</p>
+                  <ul class="mt-4 space-y-2 leading-7">
+                    <li>Reaktivitet</li>
+                    <li>Bjeffing</li>
+                    <li>Uro</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <label for="balance-slider" class="text-sm font-semibold uppercase tracking-[0.18em] text-forest/52">Flytt balansen</label>
+                <input id="balance-slider" class="balance-slider mt-3 h-2 w-full cursor-pointer rounded-full" type="range" min="0" max="100" value="${state.balance}" />
+                <p id="balance-summary" class="mt-4 max-w-2xl leading-8 text-forest/74"></p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              data-continue-step="environment"
+              class="inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+            >
+              Fortsett
+            </button>
+          </div>
+        `,
+        environment: () => `
+          <div class="space-y-6">
+            <p class="max-w-2xl text-lg leading-8 text-forest/74">
+              Hvor stimulerende er hundens daglige miljø?
+            </p>
+            <div class="grid gap-3 sm:grid-cols-3">
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-environment-option="urban">Veldig travelt bymiljø</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-environment-option="moderate">Moderat aktivitet</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-environment-option="calm">Rolig miljø</button>
+            </div>
+
+            <div id="environment-response" class="${state.answers.environment ? '' : 'hidden '}rounded-[2rem] bg-sand/48 p-6 shadow-card sm:p-7">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Hva dette kan bety</p>
+              <p class="mt-3 max-w-2xl leading-8 text-forest/74">
+                Små daglige stimuli samler seg inne i nervesystemet.
+              </p>
+              <p class="mt-4 max-w-2xl text-lg leading-8 text-forest/78">
+                Nervesystemet er som et glass som langsomt fylles med vann.
+              </p>
+              <button
+                type="button"
+                data-continue-step="observation"
+                class="mt-6 inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+              >
+                Fortsett
+              </button>
+            </div>
+          </div>
+        `,
+        observation: () => `
+          <div class="space-y-6">
+            <p class="max-w-2xl text-lg leading-8 text-forest/74">
+              Hva viser hunden din for den reagerer?
+            </p>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-signal-option="tension">Spenning i kroppen</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-signal-option="pause">Plutselig pause</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-signal-option="breathing">Raskere pust</button>
+              <button type="button" class="option-button rounded-[1.5rem] px-5 py-5 text-left text-base font-medium" data-signal-option="staring">Intens stirring</button>
+            </div>
+
+            <div id="signal-response" class="${state.answers.signal ? '' : 'hidden '}rounded-[2rem] bg-white/78 p-6 shadow-card sm:p-7">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Observasjon betyr noe</p>
+              <p class="mt-3 max-w-2xl leading-8 text-forest/74">
+                Tidlige signaler dukker opp før atferden eskalerer. Når du ser kroppen først, kan du svare før nervesystemet blir helt oversvømt.
+              </p>
+              <button
+                type="button"
+                data-continue-step="reset"
+                class="mt-6 inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+              >
+                Fortsett
+              </button>
+            </div>
+          </div>
+        `,
+        reset: () => `
+          <div class="space-y-6">
+            <div class="rounded-[2rem] bg-sand/50 p-6 shadow-card sm:p-7">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Reseten</p>
+              <h4 class="mt-3 font-display text-3xl leading-[1.1] text-forest">7 Day Nervous System Reset</h4>
+              <p class="mt-4 max-w-2xl leading-8 text-forest/74">
+                I stedet for å lære nye kommandoer, fokuserer reseten på:
+              </p>
+              <ul class="mt-6 space-y-3 text-lg leading-8 text-forest/76">
+                <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Å senke den daglige rytmen</span></li>
+                <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Å beskytte hvile</span></li>
+                <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Varsom utforskning</span></li>
+                <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>Observasjon</span></li>
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              data-continue-step="story"
+              class="inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+            >
+              Fortsett
+            </button>
+          </div>
+        `,
+        story: () => `
+          <div class="rounded-[2rem] bg-sand/44 p-6 shadow-card sm:p-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Minihistorie</p>
+            <h4 class="mt-3 font-display text-3xl leading-[1.12] text-forest">Se for deg en uke der alt går langsommere.</h4>
+            <div class="mt-8 space-y-4 text-lg leading-8 text-forest/74">
+              <p class="story-line">Rolige turer.</p>
+              <p class="story-line">Lengre snusing.</p>
+              <p class="story-line">Mer hvile.</p>
+              <p class="story-line">Mindre avbrytelser.</p>
+            </div>
+            <p class="story-line mt-8 max-w-2xl leading-8 text-forest/70">
+              I den langsommere rytmen begynner nervesystemet å stole på dagen igjen.
+            </p>
+            <button
+              type="button"
+              data-continue-step="result"
+              class="mt-8 inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+            >
+              Fortsett
+            </button>
+          </div>
+        `,
+        result: () => `
+          <div class="rounded-[2rem] bg-white/82 p-6 shadow-card sm:p-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Resultat</p>
+            <h4 class="mt-3 font-display text-3xl leading-[1.1] text-forest">Hunden din trenger kanskje ikke mer trening</h4>
+            <p class="mt-5 max-w-3xl text-lg leading-8 text-forest/74">
+              ${getResultMessage()}
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                id="result-cta"
+                class="inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+              >
+                Utforsk 7 Day Reset-guiden
+              </button>
+              <button
+                type="button"
+                id="restart-conversation"
+                class="inline-flex items-center justify-center rounded-full border border-forest/12 bg-white px-7 py-3.5 font-semibold text-forest transition duration-300 hover:border-forest/25"
+              >
+                Start samtalen på nytt
+              </button>
+            </div>
+          </div>
+        `,
+      };
+
+      const attachCommonStartListeners = () => {
+        document.querySelectorAll('[data-start-conversation]').forEach((button) => {
+          button.addEventListener('click', () => {
+            transitionToStep('question', true);
+          });
+        });
+      };
+
+      const renderCurrentStep = () => {
+        updateHeader();
+
+        if (!state.currentStep) {
+          conversationPanel.innerHTML = stepTemplates.placeholder();
+          attachCommonStartListeners();
+          return;
+        }
+
+        conversationPanel.innerHTML = stepTemplates[state.currentStep]();
+
+        if (state.currentStep === 'question') {
+          document.querySelectorAll('[data-trigger-option]').forEach((button) => {
+            button.addEventListener('click', () => {
+              state.answers.trigger = button.dataset.triggerOption;
+              button.classList.add('is-selected');
+              window.setTimeout(() => transitionToStep('activation'), prefersReducedMotion ? 0 : 220);
+            });
+          });
+        }
+
+        if (state.currentStep === 'activation') {
+          const slider = document.getElementById('balance-slider');
+          slider.addEventListener('input', () => {
+            state.balance = Number(slider.value);
+            renderBalanceState();
+          });
+          renderBalanceState();
+        }
+
+        if (state.currentStep === 'environment') {
+          document.querySelectorAll('[data-environment-option]').forEach((button) => {
+            if (button.dataset.environmentOption === state.answers.environment) {
+              button.classList.add('is-selected');
+            }
+
+            button.addEventListener('click', () => {
+              state.answers.environment = button.dataset.environmentOption;
+              document.querySelectorAll('[data-environment-option]').forEach((item) => item.classList.remove('is-selected'));
+              button.classList.add('is-selected');
+              document.getElementById('environment-response').classList.remove('hidden');
+            });
+          });
+        }
+
+        if (state.currentStep === 'observation') {
+          document.querySelectorAll('[data-signal-option]').forEach((button) => {
+            if (button.dataset.signalOption === state.answers.signal) {
+              button.classList.add('is-selected');
+            }
+
+            button.addEventListener('click', () => {
+              state.answers.signal = button.dataset.signalOption;
+              document.querySelectorAll('[data-signal-option]').forEach((item) => item.classList.remove('is-selected'));
+              button.classList.add('is-selected');
+              document.getElementById('signal-response').classList.remove('hidden');
+            });
+          });
+        }
+
+        document.querySelectorAll('[data-continue-step]').forEach((button) => {
+          button.addEventListener('click', () => {
+            transitionToStep(button.dataset.continueStep);
+          });
+        });
+
+        if (state.currentStep === 'story') {
+          clearStoryTimers();
+          document.querySelectorAll('.story-line').forEach((line, index) => {
+            const timer = window.setTimeout(
+              () => line.classList.add('is-visible'),
+              prefersReducedMotion ? 0 : 180 * (index + 1)
+            );
+            state.storyTimers.push(timer);
+          });
+        }
+
+        if (state.currentStep === 'result') {
+          document.getElementById('result-cta').addEventListener('click', () => {
+            guideSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+          });
+          document.getElementById('restart-conversation').addEventListener('click', () => {
+            state.answers.trigger = '';
+            state.answers.environment = '';
+            state.answers.signal = '';
+            state.balance = 58;
+            transitionToStep('question');
+          });
+        }
+      };
+
+      const transitionToStep = (nextStep, shouldScroll) => {
+        clearStoryTimers();
+
+        if (shouldScroll) {
+          conversationSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+
+        if (prefersReducedMotion || !state.currentStep) {
+          state.currentStep = nextStep;
+          renderCurrentStep();
+          return;
+        }
+
+        conversationPanel.classList.add('is-leaving');
+
+        window.setTimeout(() => {
+          state.currentStep = nextStep;
+          renderCurrentStep();
+          conversationPanel.classList.remove('is-leaving');
+          conversationPanel.classList.add('is-entering');
+
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+              conversationPanel.classList.remove('is-entering');
+            });
+          });
+        }, 220);
+      };
+
+      renderCurrentStep();
+      attachCommonStartListeners();
+    </script>
+  </body>
+</html>

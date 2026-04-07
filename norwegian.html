@@ -48,6 +48,19 @@
         color: #264333;
       }
 
+      .mobile-sticky-cta {
+        transform: translateY(calc(100% + 1rem));
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.32s ease, opacity 0.32s ease;
+      }
+
+      .mobile-sticky-cta.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
       .fade-section {
         opacity: 0;
         transform: translateY(28px);
@@ -271,6 +284,11 @@
           transform: none;
         }
       }
+
+      @media (max-width: 1023px) {
+        body.has-mobile-cta {
+          padding-bottom: calc(7.5rem + env(safe-area-inset-bottom));
+        }
       }
 
       @keyframes guidePulse {
@@ -291,7 +309,7 @@
       }
     </style>
   </head>
-  <body class="bg-beige font-body text-forest antialiased selection:bg-terracotta/20">
+  <body class="has-mobile-cta bg-beige font-body text-forest antialiased selection:bg-terracotta/20">
     <!-- Hero -->
     <header class="relative isolate overflow-hidden">
       <img
@@ -305,17 +323,17 @@
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-beige/90"></div>
 
       <nav class="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
-        <a href="#top" class="font-display text-xl font-semibold tracking-wide text-beige">Canine Calm</a>
-        <div class="flex items-center gap-4 md:gap-8">
+        <a href="#top" class="font-display text-lg font-semibold tracking-wide text-beige sm:text-xl">Canine Calm</a>
+        <div class="flex items-center gap-3 sm:gap-4 md:gap-8">
           <div class="hidden items-center gap-8 text-sm font-medium text-beige/90 md:flex">
             <a href="#problems" class="transition hover:text-white">Utfordringer</a>
             <a href="#philosophy" class="transition hover:text-white">Filosofi</a>
             <a href="#products" class="transition hover:text-white">Produkter</a>
             <a href="#faq" class="transition hover:text-white">FAQ</a>
           </div>
-          <div class="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 p-1 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
-            <a href="index.html" class="rounded-full px-3 py-2 text-white/80 transition hover:text-white">EN</a>
-            <a href="norwegian.html" aria-current="page" class="rounded-full bg-white px-3 py-2 text-forest">NO</a>
+          <div class="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 p-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm sm:gap-2 sm:text-xs">
+            <a href="index.html" class="rounded-full px-2.5 py-2 text-white/80 transition hover:text-white sm:px-3">EN</a>
+            <a href="norwegian.html" aria-current="page" class="rounded-full bg-white px-2.5 py-2 text-forest sm:px-3">NO</a>
           </div>
         </div>
       </nav>
@@ -325,7 +343,7 @@
           <span class="inline-flex rounded-full border border-beige/30 bg-white/10 px-4 py-2 text-sm font-medium text-beige backdrop-blur-sm">
             Flaggskip PDF-guide for overstimulerte hunder
           </span>
-          <h1 class="mt-8 font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 class="mt-8 font-display text-4xl leading-tight text-white sm:text-5xl lg:text-7xl">
             En 7-dagers reset for hunder som ikke klarer å skru helt av.
           </h1>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-beige/90 sm:text-xl">
@@ -539,10 +557,10 @@
       <section id="philosophy" class="fade-section bg-sand/60 py-20 lg:py-24">
         <div class="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
           <div class="order-2 lg:order-1">
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Guidens filosofi</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Regulering før trening</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">DogWithin-filosofien</p>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Forståelse, ro og kommunikasjon først</h2>
             <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/75">
-              PDF-guiden bygger på én kjerneidé: når restitusjonen er liten og stimuleringen holder seg høy, lærer kroppen dårlig. Ro starter med å endre forholdene, ikke bare kommandoene.
+              Denne guiden følger den samme filosofien som DogWithin: hver hund fortjener respekt, tid og rom til å kommunisere. Arbeidet bygger ikke på lydighet, press eller raske løsninger, men på observasjon, reelle behov og forhold som gjør balanse mulig.
             </p>
 
             <div class="mt-10 space-y-5">
@@ -552,8 +570,8 @@
                     <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4c4.5 0 8 3.5 8 8s-3.5 8-8 8-8-3.5-8-8 3.5-8 8-8Z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-semibold text-forest">Reduser unødvendig stimulering</h3>
-                    <p class="mt-2 leading-7 text-forest/70">Travle turer, støy, høyt tempo og konstante avbrytelser kan holde nervesystemet aktivert for lenge.</p>
+                    <h3 class="text-lg font-semibold text-forest">Kommunikasjon før korrigering</h3>
+                    <p class="mt-2 leading-7 text-forest/70">I stedet for å presse fram lydighet handler dette om å lese kropp, rytme, avstand og signaler tidlig nok til å svare med mer klarhet og mindre press.</p>
                   </div>
                 </div>
               </div>
@@ -564,8 +582,8 @@
                     <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-4.5 7-11V5l-7-2-7 2v5c0 6.5 7 11 7 11Z"/><path d="m9.5 12 2 2 3.5-4"/></svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-semibold text-forest">Beskytt hvile og restitusjon</h3>
-                    <p class="mt-2 leading-7 text-forest/70">Dyp hvile er stedet der kroppen senker stresshormoner, organiserer informasjon og vender tilbake mot utgangspunktet.</p>
+                    <h3 class="text-lg font-semibold text-forest">Etikk og atferdsvitenskap</h3>
+                    <p class="mt-2 leading-7 text-forest/70">Tilnærmingen sier nei til frykt, makt og overstimulering. Milde, kunnskapsbaserte metoder beskytter hundens emosjonelle helse og gjør læring mulig igjen.</p>
                   </div>
                 </div>
               </div>
@@ -576,8 +594,8 @@
                     <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 12a5 5 0 0 1 5-5c3.2 0 5 2.6 5 5 0 4.5-5 7-5 7s-5-2.5-5-7Z"/><path d="M3 11c0 2.5 1.5 4.5 4 5"/></svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-semibold text-forest">Observer før du griper inn</h3>
-                    <p class="mt-2 leading-7 text-forest/70">Små endringer i kroppsholdning, pust, pauser og rytme kommer ofte før bjeffing, trekking, freezing eller tilbaketrekning.</p>
+                    <h3 class="text-lg font-semibold text-forest">Individuell omsorg og valgfrihet</h3>
+                    <p class="mt-2 leading-7 text-forest/70">Hver hund har sitt eget tempo, sine grenser og sin følsomhet. Fremgang kommer når miljø, rytme og samspill tilpasses individet.</p>
                   </div>
                 </div>
               </div>
@@ -666,23 +684,23 @@
       <!-- Products -->
       <section id="products" class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
         <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-2xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Digitale produkter</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Én flaggskipguide. Klarere og roligere dager i sju steg.</h2>
+          <div class="max-w-2xl md:max-w-xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Digital guide og støtte</p>
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[12ch]">Én guide. Et roligere sted å begynne.</h2>
           </div>
-          <p class="max-w-xl text-lg leading-8 text-forest/72">
-            PDF-guiden er kjerneproduktet: en praktisk reset for hunder som bærer for mye stimulering. Webinarstøtte kan bygge videre rundt den.
+          <p class="max-w-xl text-lg leading-8 text-forest/72 md:max-w-md">
+            PDF-guiden er kjernetilbudet: et strukturert sted å begynne, forankret i DogWithin-tilnærmingen, med valgfri én-til-én-støtte for eiere som vil ha direkte veiledning.
           </p>
         </div>
 
-        <div class="mt-12 grid gap-6 lg:grid-cols-2">
-          <article class="product-card rounded-[2rem] bg-white p-8 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-product-card="guides">
-            <div class="flex items-center justify-between gap-4">
+        <div class="mt-12 grid gap-6 md:grid-cols-2 md:items-stretch">
+          <article class="product-card rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft md:p-8" data-product-card="guides">
+            <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <h3 class="font-display text-3xl text-forest">7-Day Dog Reset PDF</h3>
               <span class="rounded-full bg-sand px-4 py-2 text-sm font-semibold text-forest">Flaggskipguide</span>
             </div>
             <p class="mt-5 max-w-xl leading-8 text-forest/72">
-              En strukturert digital guide som forklarer kronisk stress, restitusjon, miljø, observasjon og en full sju-dagers reset-rytme i hverdagen.
+              En strukturert digital guide skrevet av Artemis Antoniou for å forklare kronisk stress, restitusjon, miljø, observasjon og en sju-dagers reset-rytme i hverdagen.
             </p>
             <ul class="mt-8 space-y-4 text-forest/78">
               <li class="guide-item flex items-start gap-3 px-3 py-2" data-guide-key="stress-science"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Kronisk stress og nervesystemet</span></li>
@@ -698,25 +716,25 @@
             </a>
           </article>
 
-          <article class="product-card rounded-[2rem] bg-forest p-8 text-beige shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-product-card="webinars">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="font-display text-3xl">Reset-støttewebinar</h3>
-              <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-beige">Valgfri støtte</span>
+          <article class="product-card rounded-[2rem] bg-forest p-7 text-beige shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-soft md:p-8" data-product-card="webinars">
+            <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h3 class="font-display text-3xl">1:1 veiledning med Artemis</h3>
+              <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-beige">Valgfri sesjon</span>
             </div>
             <p class="mt-5 max-w-xl leading-8 text-beige/80">
-              Et oppfølgende støtteformat for eiere som vil ha hjelp til å bruke reset-guiden på egen husholdningsrytme, triggere og restitusjonsmønstre.
+              Et oppfølgende støtteformat for eiere som vil ha direkte hjelp til å bruke guiden på turer, rutiner, triggere, restitusjonsmønstre og valg i hverdagen.
             </p>
             <ul class="mt-8 space-y-4 text-beige/90">
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Gjennomgang av 7-dagers reseten</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Snakk om hundens hverdagsrytme</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Spørsmål om restitusjon og triggere</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Støtte til implementering i praksis</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Gå gjennom guiden med din egen hund i tankene</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Se på tempo, avstand og hverdagsstruktur</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Snakk om stressmønstre og tidlige signaler</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Få praktiske neste steg tilpasset hjemmet ditt</span></li>
             </ul>
             <a
-              href="#offer"
+              href="mailto:info@dogwithin.com"
               class="mt-10 inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-3.5 font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
             >
-              Bli med på støttesesjon
+              Be om veiledning
             </a>
           </article>
         </div>
@@ -724,16 +742,16 @@
 
       <!-- Interactive quiz -->
       <section class="fade-section bg-[image:var(--tw-gradient-stops)] from-white to-sand/40 py-20 lg:py-24">
-        <div class="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div class="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[0.88fr_1.12fr] md:items-start md:gap-12 lg:gap-10 lg:px-8">
           <div>
             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Rask innsiktsquiz</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Trenger hunden din en nervesystem-reset?</h2>
-            <p class="mt-5 max-w-xl text-lg leading-8 text-forest/75">
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[12ch]">Trenger hunden din en nervesystem-reset?</h2>
+            <p class="mt-5 max-w-xl text-lg leading-8 text-forest/75 md:max-w-md">
               Svar på fem raske spørsmål og få et tydelig startpunkt inne i 7-Day Reset-guiden.
             </p>
           </div>
 
-          <div id="behavior-quiz" class="rounded-[2rem] bg-white p-8 shadow-soft">
+          <div id="behavior-quiz" class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <p id="quiz-step-label" class="text-sm font-semibold uppercase tracking-[0.2em] text-terracotta">Spørsmål 1 av 5</p>
@@ -805,11 +823,11 @@
       <!-- Social proof -->
       <section class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
         <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-2xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Sosialt bevis</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">For hundeeiere som trengte rytme, ikke mer press</h2>
+          <div class="max-w-2xl md:max-w-xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Tilbakemeldinger fra eiere</p>
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[13ch]">Hva eiere setter pris på i DogWithin-tilnærmingen</h2>
           </div>
-          <p class="max-w-xl text-lg leading-8 text-forest/72">Tilbakemeldinger fra eiere som begynte å se atferd gjennom restitusjon, observasjon og roligere struktur i hverdagen.</p>
+          <p class="max-w-xl text-lg leading-8 text-forest/72 md:max-w-md">Gjennomgående temaer fra eiere som valgte en roligere og mer etisk tilnærming: klarere turer, tidligere forståelse og støtte som føles individuell.</p>
         </div>
 
         <div class="mt-12 grid gap-6 lg:grid-cols-3">
@@ -823,12 +841,12 @@
                 decoding="async"
               />
               <div>
-                <p class="font-semibold text-forest">Maria og Luna</p>
-                <p class="text-sm text-forest/60">Raskere restitusjon hjemme</p>
+                <p class="font-semibold text-forest">Roligere turer</p>
+                <p class="text-sm text-forest/60">Et vanlig tema i tilbakemeldinger</p>
               </div>
             </div>
             <p class="mt-6 leading-8 text-forest/76">
-              “Reseten hjalp meg å slutte å reagere på hver eneste lyd. Da jeg senket tempoet i hele dagen, begynte Luna å hvile dypere og hente seg raskere inn.”
+              Eiere beskriver ofte at når tempo, avstand og båndpress endres, begynner turene å føles mindre kaotiske og hundene henter seg lettere inn etterpå.
             </p>
           </article>
 
@@ -842,12 +860,12 @@
                 decoding="async"
               />
               <div>
-                <p class="font-semibold text-forest">James og Milo</p>
-                <p class="text-sm text-forest/60">Turrytme og nedregulering</p>
+                <p class="font-semibold text-forest">Tidligere forståelse</p>
+                <p class="text-sm text-forest/60">Et vanlig tema i tilbakemeldinger</p>
               </div>
             </div>
             <p class="mt-6 leading-8 text-forest/76">
-              “Det som endret mest var rytmen. Roligere turer, mer snusing og mindre press ga Milo plass til å komme tilbake til seg selv.”
+              Mange sier at det største skiftet er å lære å se kroppen tidligere, før bjeffing, trekking eller tilbaketrekning blir det eneste synlige.
             </p>
           </article>
 
@@ -861,25 +879,65 @@
                 decoding="async"
               />
               <div>
-                <p class="font-semibold text-forest">Eleni og Poppy</p>
-                <p class="text-sm text-forest/60">Observasjon før reaksjon</p>
+                <p class="font-semibold text-forest">Veiledning som passer hunden</p>
+                <p class="text-sm text-forest/60">Et vanlig tema i tilbakemeldinger</p>
               </div>
             </div>
             <p class="mt-6 leading-8 text-forest/76">
-              “Jeg begynte å se de tidlige signalene hos Poppy i stedet for å vente på den store reaksjonen. Det ene skiftet endret alt i hvordan jeg hjelper henne.”
+              En gjentakende grunn til at eiere tar kontakt er ønsket om hjelp som respekterer den individuelle hunden i stedet for standard lydighetsopplegg som ignorerer tempo, følsomhet og miljø.
             </p>
           </article>
         </div>
       </section>
 
-      <!-- Educational section -->
+      <!-- Om Artemis -->
       <section class="fade-section bg-forest py-20 text-beige lg:py-24">
         <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Miniundervisning</p>
-          <h2 class="mt-4 font-display text-4xl sm:text-5xl">Hvorfor restitusjon endrer atferd før mer trening gjør det</h2>
-          <p class="mx-auto mt-6 max-w-3xl text-lg leading-9 text-beige/82">
-            Når stimulering fortsetter å hope seg opp og kortisol holder seg forhøyet, kan kroppen forbli delvis aktivert selv i rolige øyeblikk. Derfor endrer ofte langsommere rytme, dypere hvile, roligere miljø og bedre observasjon atferd før flere øvelser gjør det.
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Om Artemis</p>
+          <h2 class="mt-4 font-display text-4xl leading-[1.08] sm:text-5xl">Etisk hundeatferdsveiledning forankret i observasjon</h2>
+          <p class="mx-auto mt-6 max-w-4xl text-lg leading-9 text-beige/82">
+            Artemis Antoniou er Ethical Dog Behaviour Specialist og Sensory Enrichment Coach, utdannet ved Nordic Education Center for Dog Trainers under Turid Rugaas. Hun er også sertifisert Foundation Postural Analyst gjennom Galen Myotherapy, har videreutdanning hos Dr Amber Batson, representerer Hellas i Pet Dog Trainers of Europe og fortsetter i avanserte studier innen calming signals.
           </p>
+          <p class="mx-auto mt-6 max-w-4xl text-lg leading-9 text-beige/74">
+            Arbeidet hennes styres av empati, atferdsvitenskap og dyp respekt for hundens naturlige væremåte. Målet er ikke å kontrollere hunden inn i lydighet, men å hjelpe familier med å forstå behov, redusere press og bygge roligere kommunikasjon i hverdagen.
+          </p>
+          <div class="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-beige/80">
+            <span class="rounded-full border border-white/12 px-4 py-2">Sensory Enrichment Coach</span>
+            <span class="rounded-full border border-white/12 px-4 py-2">PDTE-representant for Hellas</span>
+            <span class="rounded-full border border-white/12 px-4 py-2">Foundation Postural Analyst</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive experience entry -->
+      <section class="fade-section bg-white/45 py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="overflow-hidden rounded-[2.5rem] border border-forest/10 bg-white/78 shadow-card backdrop-blur-sm">
+            <div class="grid gap-10 px-8 py-10 lg:grid-cols-[0.94fr_1.06fr] lg:px-12 lg:py-12">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Interaktiv opplevelse</p>
+                <h2 class="mt-4 max-w-[12ch] font-display text-4xl leading-[1.06] text-forest sm:text-5xl">Samtale Med Hunden Din</h2>
+                <p class="mt-6 max-w-xl text-lg leading-8 text-forest/74">
+                  Åpne en egen, roligere opplevelse som går gjennom aktivering, restitusjon, miljø og de tidlige signalene som kommer før atferden eskalerer.
+                </p>
+                <a
+                  href="interaktiv-hundesamtale.html"
+                  class="mt-8 inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+                >
+                  Åpne samtalen
+                </a>
+              </div>
+
+              <div class="rounded-[2rem] bg-sand/55 p-7 shadow-card sm:p-8">
+                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Slik oppleves den</p>
+                <ul class="mt-6 space-y-4 text-lg leading-8 text-forest/76">
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>En reflekterende dialog i stedet for en leken quiz</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>En rolig gjennomgang av aktivering, restitusjon og miljø</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>En myk overgang videre til 7-Day Reset-guiden</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -889,9 +947,9 @@
           <div class="grid gap-10 px-8 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-14 lg:py-14">
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Flaggskiptilbud</p>
-              <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">7-Day Dog Reset</h2>
-              <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/76">
-                En rolig, strukturert PDF for eiere som vil redusere belastningen på nervesystemet før de legger på mer treningspress.
+              <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[11ch]">7-Day Dog Reset</h2>
+              <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/76 md:max-w-xl">
+                En rolig, strukturert PDF for eiere som vil senke belastningen på nervesystemet før de ber hunden om mer.
               </p>
               <ul class="mt-8 space-y-4 text-lg text-forest/80">
                 <li class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>9 grundige kapitler</span></li>
@@ -900,22 +958,69 @@
               </ul>
             </div>
 
-            <div class="rounded-[2rem] bg-white/80 p-8 shadow-card backdrop-blur-sm">
+            <div class="rounded-[2rem] bg-white/80 p-7 shadow-card backdrop-blur-sm sm:p-8">
               <p class="text-sm font-semibold uppercase tracking-[0.2em] text-forest/55">Umiddelbar digital tilgang</p>
               <div class="mt-4">
                 <span class="font-display text-5xl text-forest">PDF-guide</span>
               </div>
               <p class="mt-5 leading-8 text-forest/72">
-                Start med guiden som forklarer hvorfor hunden din kan være overaktivert, hvordan du beskytter restitusjon, og hvordan du resetter hverdagsrytmen dag for dag.
+                Begynn med guiden som forklarer hvorfor en hund kan bli værende i overaktivering, hvordan du beskytter restitusjon, og hvordan du resetter hverdagsrytmen dag for dag.
               </p>
               <a
-                href="#top"
+                href="mailto:info@dogwithin.com?subject=7-Day%20Dog%20Reset%20Guide"
                 class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-terracotta px-6 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
               >
-                Få reset-guiden
+                Be om guiden
               </a>
-              <p class="mt-4 text-center text-sm font-medium text-forest/55">Leveres som umiddelbar PDF-nedlasting</p>
+              <a
+                href="mailto:info@dogwithin.com"
+                class="mt-4 inline-flex w-full items-center justify-center rounded-full border border-forest/12 bg-white px-6 py-4 text-base font-semibold text-forest transition duration-300 hover:border-forest/25"
+              >
+                Still Artemis et spørsmål
+              </a>
+              <p class="mt-4 text-center text-sm font-medium text-forest/55">Be om leveringsdetaljer direkte på e-post</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl md:max-w-xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Kontakt</p>
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[13ch]">Snakk med Artemis før du starter</h2>
+          </div>
+          <p class="max-w-xl text-lg leading-8 text-forest/72 md:max-w-md">Hvis du vil ha hjelp til å velge guide, spørre om støtte eller kontakte Artemis direkte, kan du starte her.</p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-[repeat(3,minmax(0,1fr))]">
+          <article class="rounded-[2rem] bg-white p-7 shadow-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">E-post</p>
+            <a href="mailto:info@dogwithin.com" class="mt-4 inline-block break-all font-display text-2xl text-forest transition hover:text-terracotta sm:text-3xl">info@dogwithin.com</a>
+            <p class="mt-4 leading-8 text-forest/72">Best for spørsmål om guiden, støtteforespørsler og direkte kontakt om hundens behov.</p>
+          </article>
+
+          <article class="rounded-[2rem] bg-white p-7 shadow-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Telefon</p>
+            <a href="tel:+4796736337" class="mt-4 inline-block font-display text-2xl text-forest transition hover:text-terracotta sm:text-3xl">+47 96736337</a>
+            <p class="mt-4 leading-8 text-forest/72">For direkte spørsmål om én-til-én-veiledning, konsultasjoner og praktiske neste steg.</p>
+          </article>
+
+          <article class="rounded-[2rem] bg-white p-7 shadow-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Besøk</p>
+            <p class="mt-4 font-display text-2xl text-forest sm:text-3xl">Bergensgata 12</p>
+            <p class="mt-2 text-lg text-forest/76">0468 Oslo, Norge</p>
+            <p class="mt-4 leading-8 text-forest/72">DogWithin holder til i Oslo. Ta kontakt direkte for tilgjengelighet og hvilket støtteformat som passer best.</p>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-sand/55 p-7 shadow-card sm:p-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Sosiale medier</p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-forest/80">
+            <a href="https://www.tiktok.com/@petterworld.no" target="_blank" rel="noreferrer" class="rounded-full border border-forest/10 bg-white px-4 py-2 transition hover:border-forest/25">TikTok</a>
+            <a href="https://www.facebook.com/pettersworld" target="_blank" rel="noreferrer" class="rounded-full border border-forest/10 bg-white px-4 py-2 transition hover:border-forest/25">Facebook</a>
+            <a href="https://instagram.com/petterworld.no?igshid=YmMyMTA2M2Y=" target="_blank" rel="noreferrer" class="rounded-full border border-forest/10 bg-white px-4 py-2 transition hover:border-forest/25">Instagram</a>
           </div>
         </div>
       </section>
@@ -925,47 +1030,47 @@
         <div class="mx-auto max-w-4xl px-6 lg:px-8">
           <div class="text-center">
             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">FAQ</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Vanlige spørsmål før du starter reseten</h2>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Vanlige spørsmål om tilnærmingen</h2>
           </div>
 
           <div class="mt-12 space-y-4">
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>Er dette et treningsprogram?</span>
+                <span>Er dette lydighetstrening?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                Nei. Guiden er en strukturert resetperiode som fokuserer på å senke stimulering, beskytte restitusjon og forbedre observasjon før du legger på mer treningspress.
+                Nei. Denne tilnærmingen bygger på kommunikasjon, observasjon og emosjonell balanse. Guiden hjelper deg å redusere press og møte hundens behov før du legger på flere krav.
               </div>
             </article>
 
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>Vil dette hjelpe hvis hunden min virker reaktiv eller overveldet?</span>
+                <span>Hvilke metoder bygger guiden på?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                Ja. Guiden er spesielt nyttig når hunden strever med hvile, reagerer raskt på små triggere eller virker ute av stand til å skru av etter stimulering.
+                Filosofien er etisk og kunnskapsbasert. Den unngår frykt, makt og unødvendig overstimulering og fokuserer i stedet på rolig struktur, kroppsspråk, rytme og reelle behov.
               </div>
             </article>
 
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>Skal jeg stoppe all trening i sju dager?</span>
+                <span>Følger alle hunder nøyaktig samme reset?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                Målet er ikke perfeksjon eller å gjøre ingenting. Målet er å redusere unødvendig stimulering, forenkle rytmen og gi nervesystemet nok restitusjon til å lære lettere.
+                Nei. Guiden gir en tydelig struktur, men arbeidet er fortsatt individuelt. Du tilpasser tempo, miljø, hvile og hverdagsvalg til hunden du faktisk har foran deg.
               </div>
             </article>
 
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>Hvordan får jeg tilgang til guiden?</span>
+                <span>Kan jeg kontakte Artemis direkte før kjøp?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                Tilgangen er digital. Etter kjøp får du umiddelbar tilgang til å laste ned PDF-guiden.
+                Ja. Du kan kontakte henne direkte på info@dogwithin.com eller +47 96736337 hvis du vil ha hjelp til å velge riktig neste steg.
               </div>
             </article>
           </div>
@@ -975,27 +1080,44 @@
       <!-- Final CTA -->
       <section class="fade-section mx-auto max-w-5xl px-6 py-20 text-center lg:px-8 lg:py-24">
         <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Start denne uken</p>
-        <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Gi nervesystemet sju roligere dager</h2>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-forest/72">
-          Start med en praktisk PDF som hjelper deg å senke rytmen, beskytte restitusjon og endelig forstå hva som skjer under atferden.
+        <h2 class="mx-auto mt-4 max-w-[12ch] font-display text-4xl leading-[1.08] text-forest sm:text-5xl">Gi hundens nervesystem sju roligere dager</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-forest/72 md:max-w-xl">
+          Start med en praktisk PDF som hjelper deg å senke rytmen, beskytte restitusjon og forstå hunden foran deg med mer klarhet og mindre press.
         </p>
-        <a
-          href="#offer"
-          class="mt-10 inline-flex items-center justify-center rounded-full bg-forest px-8 py-4 text-lg font-semibold text-beige transition duration-300 hover:bg-[#163121]"
-        >
-          Start reseten
-        </a>
+        <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="#offer"
+            class="inline-flex items-center justify-center rounded-full bg-forest px-8 py-4 text-lg font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+          >
+            Start reseten
+          </a>
+          <a
+            href="mailto:info@dogwithin.com"
+            class="inline-flex items-center justify-center rounded-full border border-forest/15 bg-white px-8 py-4 text-lg font-semibold text-forest transition duration-300 hover:border-forest/30"
+          >
+            Kontakt Artemis
+          </a>
+        </div>
       </section>
     </main>
 
+    <footer class="border-t border-forest/10 bg-white/60 px-6 py-8 text-center backdrop-blur-sm lg:px-8">
+      <p class="text-sm leading-7 text-forest/70">
+        Designed by <a href="https://noustelos.gr" target="_blank" rel="noreferrer" class="font-semibold text-forest transition hover:text-terracotta">NOUSTELOS_STUDIO</a> /&gt; 2026 &copy; all rights reserved
+      </p>
+    </footer>
+
     <!-- Mobile sticky CTA -->
-    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-forest/10 bg-beige/95 p-4 shadow-soft backdrop-blur md:hidden">
-      <a
-        href="#offer"
-        class="inline-flex w-full items-center justify-center rounded-full bg-terracotta px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
-      >
-        Få reset-guiden
-      </a>
+    <div id="mobile-sticky-cta" class="mobile-sticky-cta fixed inset-x-0 bottom-0 z-40 border-t border-forest/10 bg-beige/95 px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-soft backdrop-blur lg:hidden">
+      <div class="mx-auto flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p class="px-1 text-sm font-semibold leading-6 text-forest">Få reset-guiden</p>
+        <a
+          href="#offer"
+          class="inline-flex shrink-0 items-center justify-center rounded-full bg-terracotta px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:bg-[#b9603e] sm:px-7"
+        >
+          Last ned nå
+        </a>
+      </div>
     </div>
 
     <!-- Minimal interaction scripts -->
@@ -1020,6 +1142,51 @@
       document.querySelectorAll('#philosophy .shadow-card, #behavior-quiz, #emotion-card, #offer .shadow-card, .faq-item').forEach((element) => {
         element.classList.add('micro-lift');
       });
+
+      const mobileStickyCta = document.getElementById('mobile-sticky-cta');
+      const offerSection = document.getElementById('offer');
+      const footerElement = document.querySelector('footer');
+
+      if (mobileStickyCta) {
+        let stickyCtaTicking = false;
+
+        const updateMobileStickyCta = () => {
+          stickyCtaTicking = false;
+
+          if (window.innerWidth >= 1024) {
+            mobileStickyCta.classList.remove('is-visible');
+            return;
+          }
+
+          const scrollableDistance = document.documentElement.scrollHeight - window.innerHeight;
+
+          if (scrollableDistance <= 0) {
+            mobileStickyCta.classList.remove('is-visible');
+            return;
+          }
+
+          const hasReachedHalfway = window.scrollY / scrollableDistance >= 0.5;
+          const offerTop = offerSection ? offerSection.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+          const footerTop = footerElement ? footerElement.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+          const shouldHideForOffer = offerTop <= window.innerHeight * 0.72;
+          const shouldHideForFooter = footerTop <= window.innerHeight;
+
+          mobileStickyCta.classList.toggle('is-visible', hasReachedHalfway && !shouldHideForOffer && !shouldHideForFooter);
+        };
+
+        const requestStickyCtaUpdate = () => {
+          if (stickyCtaTicking) {
+            return;
+          }
+
+          stickyCtaTicking = true;
+          window.requestAnimationFrame(updateMobileStickyCta);
+        };
+
+        updateMobileStickyCta();
+        window.addEventListener('scroll', requestStickyCtaUpdate, { passive: true });
+        window.addEventListener('resize', requestStickyCtaUpdate);
+      }
 
       const bounceIcon = (icon) => {
         if (!icon) {

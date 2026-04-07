@@ -48,6 +48,19 @@
         color: #264333;
       }
 
+      .mobile-sticky-cta {
+        transform: translateY(calc(100% + 1rem));
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.32s ease, opacity 0.32s ease;
+      }
+
+      .mobile-sticky-cta.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
       .fade-section {
         opacity: 0;
         transform: translateY(28px);
@@ -273,6 +286,12 @@
         }
       }
 
+      @media (max-width: 1023px) {
+        body.has-mobile-cta {
+          padding-bottom: calc(7.5rem + env(safe-area-inset-bottom));
+        }
+      }
+
       @keyframes guidePulse {
         0% {
           background-color: rgba(199, 109, 74, 0);
@@ -291,7 +310,7 @@
       }
     </style>
   </head>
-  <body class="bg-beige font-body text-forest antialiased selection:bg-terracotta/20">
+  <body class="has-mobile-cta bg-beige font-body text-forest antialiased selection:bg-terracotta/20">
     <!-- Hero -->
     <header class="relative isolate overflow-hidden">
       <img
@@ -305,17 +324,17 @@
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-beige/90"></div>
 
       <nav class="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
-        <a href="#top" class="font-display text-xl font-semibold tracking-wide text-beige">Canine Calm</a>
-        <div class="flex items-center gap-4 md:gap-8">
+        <a href="#top" class="font-display text-lg font-semibold tracking-wide text-beige sm:text-xl">Canine Calm</a>
+        <div class="flex items-center gap-3 sm:gap-4 md:gap-8">
           <div class="hidden items-center gap-8 text-sm font-medium text-beige/90 md:flex">
           <a href="#problems" class="transition hover:text-white">Problems</a>
           <a href="#philosophy" class="transition hover:text-white">Philosophy</a>
           <a href="#products" class="transition hover:text-white">Products</a>
           <a href="#faq" class="transition hover:text-white">FAQ</a>
           </div>
-          <div class="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 p-1 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
-            <a href="index.html" aria-current="page" class="rounded-full bg-white px-3 py-2 text-forest">EN</a>
-            <a href="norwegian.html" class="rounded-full px-3 py-2 text-white/80 transition hover:text-white">NO</a>
+          <div class="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 p-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm sm:gap-2 sm:text-xs">
+            <a href="index.html" aria-current="page" class="rounded-full bg-white px-2.5 py-2 text-forest sm:px-3">EN</a>
+            <a href="norwegian.html" class="rounded-full px-2.5 py-2 text-white/80 transition hover:text-white sm:px-3">NO</a>
           </div>
         </div>
       </nav>
@@ -325,7 +344,7 @@
           <span class="inline-flex rounded-full border border-beige/30 bg-white/10 px-4 py-2 text-sm font-medium text-beige backdrop-blur-sm">
             Flagship PDF guide for overstimulated dogs
           </span>
-          <h1 class="mt-8 font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 class="mt-8 font-display text-4xl leading-tight text-white sm:text-5xl lg:text-7xl">
             A 7-Day Reset For Dogs Who Cannot Fully Switch Off.
           </h1>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-beige/90 sm:text-xl">
@@ -539,10 +558,10 @@
       <section id="philosophy" class="fade-section bg-sand/60 py-20 lg:py-24">
         <div class="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
           <div class="order-2 lg:order-1">
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Guide philosophy</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Regulation Before Training</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">The DogWithin philosophy</p>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Understanding, calm, and communication first</h2>
             <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/75">
-              The PDF is built around one core idea: when recovery is limited and stimulation stays high, the body cannot learn well. Calm starts by changing conditions, not just commands.
+              This guide follows the same philosophy behind DogWithin: every dog deserves respect, time, and room to communicate. The work is not built on obedience, pressure, or fast fixes. It is built on observing the dog, meeting real needs, and creating the conditions where balance becomes possible.
             </p>
 
             <div class="mt-10 space-y-5">
@@ -552,8 +571,8 @@
                     <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4c4.5 0 8 3.5 8 8s-3.5 8-8 8-8-3.5-8-8 3.5-8 8-8Z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-semibold text-forest">Reduce unnecessary stimulation</h3>
-                    <p class="mt-2 leading-7 text-forest/70">Busy walks, noise, fast pacing, and constant interruptions can keep the nervous system activated for too long.</p>
+                    <h3 class="text-lg font-semibold text-forest">Communication before correction</h3>
+                    <p class="mt-2 leading-7 text-forest/70">Rather than forcing obedience, the goal is to read posture, rhythm, distance, and signals early enough to respond with more clarity and less pressure.</p>
                   </div>
                 </div>
               </div>
@@ -564,8 +583,8 @@
                     <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-4.5 7-11V5l-7-2-7 2v5c0 6.5 7 11 7 11Z"/><path d="m9.5 12 2 2 3.5-4"/></svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-semibold text-forest">Protect rest and recovery</h3>
-                    <p class="mt-2 leading-7 text-forest/70">Deep rest is where the body lowers stress hormones, reorganizes information, and returns toward baseline.</p>
+                    <h3 class="text-lg font-semibold text-forest">Ethics and behaviour science</h3>
+                    <p class="mt-2 leading-7 text-forest/70">The approach rejects fear, force, and overstimulation. Gentle, science-informed methods protect the dog's emotional health while making learning possible again.</p>
                   </div>
                 </div>
               </div>
@@ -576,8 +595,8 @@
                     <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 12a5 5 0 0 1 5-5c3.2 0 5 2.6 5 5 0 4.5-5 7-5 7s-5-2.5-5-7Z"/><path d="M3 11c0 2.5 1.5 4.5 4 5"/></svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-semibold text-forest">Observe before you intervene</h3>
-                    <p class="mt-2 leading-7 text-forest/70">Subtle changes in posture, breathing, pauses, and rhythm often appear before barking, pulling, freezing, or withdrawal.</p>
+                    <h3 class="text-lg font-semibold text-forest">Individual care and choice</h3>
+                    <p class="mt-2 leading-7 text-forest/70">Each dog has its own pace, sensitivities, and thresholds. Progress grows when routines, environment, and interaction are adapted to the individual dog.</p>
                   </div>
                 </div>
               </div>
@@ -666,23 +685,23 @@
       <!-- Products -->
       <section id="products" class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
         <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-2xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Digital products</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">One flagship guide. Clearer, calmer days in seven steps.</h2>
+          <div class="max-w-2xl md:max-w-xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Digital guide and support</p>
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[12ch]">One guide. A calmer place to begin.</h2>
           </div>
-          <p class="max-w-xl text-lg leading-8 text-forest/72">
-              The PDF is the core product: a practical reset for dogs who are carrying too much stimulation. Companion webinar support can deepen the process.
+          <p class="max-w-xl text-lg leading-8 text-forest/72 md:max-w-md">
+              The PDF is the core offer: a structured place to begin, rooted in the DogWithin approach, with optional one-to-one support for owners who want direct guidance.
           </p>
         </div>
 
-        <div class="mt-12 grid gap-6 lg:grid-cols-2">
-          <article class="product-card rounded-[2rem] bg-white p-8 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-product-card="guides">
-            <div class="flex items-center justify-between gap-4">
+        <div class="mt-12 grid gap-6 md:grid-cols-2 md:items-stretch">
+          <article class="product-card rounded-[2rem] bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft md:p-8" data-product-card="guides">
+            <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <h3 class="font-display text-3xl text-forest">7-Day Dog Reset PDF</h3>
               <span class="rounded-full bg-sand px-4 py-2 text-sm font-semibold text-forest">Flagship guide</span>
             </div>
             <p class="mt-5 max-w-xl leading-8 text-forest/72">
-              A structured digital guide that explains chronic stress, recovery, environment, observation, and a full seven-day reset rhythm for daily life.
+              A structured digital guide written by Artemis Antoniou to explain chronic stress, recovery, environment, observation, and a seven-day reset rhythm for daily life.
             </p>
             <ul class="mt-8 space-y-4 text-forest/78">
               <li class="guide-item flex items-start gap-3 px-3 py-2" data-guide-key="stress-science"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Chronic stress and the nervous system</span></li>
@@ -698,25 +717,25 @@
             </a>
           </article>
 
-          <article class="product-card rounded-[2rem] bg-forest p-8 text-beige shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-product-card="webinars">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="font-display text-3xl">Reset Companion Webinar</h3>
-              <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-beige">Optional support</span>
+          <article class="product-card rounded-[2rem] bg-forest p-7 text-beige shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-soft md:p-8" data-product-card="webinars">
+            <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h3 class="font-display text-3xl">1:1 Guidance with Artemis</h3>
+              <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-beige">Optional session</span>
             </div>
             <p class="mt-5 max-w-xl leading-8 text-beige/80">
-              A follow-up support format for owners who want help applying the reset guide to their own household rhythm, triggers, and recovery patterns.
+              A follow-up support option for owners who want direct help applying the guide to walks, routines, triggers, recovery patterns, and daily decisions.
             </p>
             <ul class="mt-8 space-y-4 text-beige/90">
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Walk through the 7-day reset</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Discuss your dog's daily rhythm</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Q&amp;A around recovery and triggers</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Case-based implementation support</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Walk through the guide with your own dog in mind</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Review pace, distance, and daily structure</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Talk through stress patterns and early signals</span></li>
+              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>Get practical next steps tailored to your household</span></li>
             </ul>
             <a
-              href="#offer"
+              href="mailto:info@dogwithin.com"
               class="mt-10 inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-3.5 font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
             >
-              Join companion support
+              Request guided support
             </a>
           </article>
         </div>
@@ -724,16 +743,16 @@
 
       <!-- Interactive quiz -->
       <section class="fade-section bg-[image:var(--tw-gradient-stops)] from-white to-sand/40 py-20 lg:py-24">
-        <div class="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div class="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[0.88fr_1.12fr] md:items-start md:gap-12 lg:gap-10 lg:px-8">
           <div>
             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Quick insight quiz</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Does Your Dog Need A Nervous System Reset?</h2>
-            <p class="mt-5 max-w-xl text-lg leading-8 text-forest/75">
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[12ch]">Does Your Dog Need A Nervous System Reset?</h2>
+            <p class="mt-5 max-w-xl text-lg leading-8 text-forest/75 md:max-w-md">
               Answer five quick questions and get a focused starting point inside the 7-Day Reset guide.
             </p>
           </div>
 
-          <div id="behavior-quiz" class="rounded-[2rem] bg-white p-8 shadow-soft">
+          <div id="behavior-quiz" class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <p id="quiz-step-label" class="text-sm font-semibold uppercase tracking-[0.2em] text-terracotta">Question 1 of 5</p>
@@ -805,11 +824,11 @@
       <!-- Social proof -->
       <section class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
         <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-2xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Social proof</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Dog owners who needed rhythm, not more pressure</h2>
+          <div class="max-w-2xl md:max-w-xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Client feedback</p>
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[13ch]">What owners value in the DogWithin approach</h2>
           </div>
-          <p class="max-w-xl text-lg leading-8 text-forest/72">Real feedback from owners who started seeing behavior through recovery, observation, and calmer daily structure.</p>
+          <p class="max-w-xl text-lg leading-8 text-forest/72 md:max-w-md">Common themes from owners who chose a calmer, ethical approach: clearer walks, earlier understanding, and support that feels individual rather than generic.</p>
         </div>
 
         <div class="mt-12 grid gap-6 lg:grid-cols-3">
@@ -823,12 +842,12 @@
                 decoding="async"
               />
               <div>
-                <p class="font-semibold text-forest">Maria &amp; Luna</p>
-                <p class="text-sm text-forest/60">Faster recovery at home</p>
+                <p class="font-semibold text-forest">Calmer walks</p>
+                <p class="text-sm text-forest/60">A frequent feedback theme</p>
               </div>
             </div>
             <p class="mt-6 leading-8 text-forest/76">
-              “The reset helped me stop reacting to every bark. Once I slowed the whole day down, Luna started resting more deeply and recovering faster.”
+              Owners often describe that once pace, distance, and leash pressure change, walks start feeling less chaotic and dogs recover more easily afterward.
             </p>
           </article>
 
@@ -842,12 +861,12 @@
                 decoding="async"
               />
               <div>
-                <p class="font-semibold text-forest">James &amp; Milo</p>
-                <p class="text-sm text-forest/60">Walk pace and decompression</p>
+                <p class="font-semibold text-forest">Earlier understanding</p>
+                <p class="text-sm text-forest/60">A frequent feedback theme</p>
               </div>
             </div>
             <p class="mt-6 leading-8 text-forest/76">
-              “What changed most was the rhythm. Slower walks, more sniffing, and less pressure gave Milo space to come back to himself.”
+              Many clients say the biggest shift is learning to notice the dog's body sooner, before barking, pulling, or shutting down becomes the only thing visible.
             </p>
           </article>
 
@@ -861,25 +880,65 @@
                 decoding="async"
               />
               <div>
-                <p class="font-semibold text-forest">Eleni &amp; Poppy</p>
-                <p class="text-sm text-forest/60">Observation before reaction</p>
+                <p class="font-semibold text-forest">Guidance that fits the dog</p>
+                <p class="text-sm text-forest/60">A frequent feedback theme</p>
               </div>
             </div>
             <p class="mt-6 leading-8 text-forest/76">
-              “I started noticing Poppy's early signals instead of waiting for the big reaction. That one shift changed everything about how I help her.”
+              A recurring reason owners reach out is that they want help that respects the individual dog instead of standard obedience formulas that ignore pace, sensitivity, and environment.
             </p>
           </article>
         </div>
       </section>
 
-      <!-- Educational section -->
+      <!-- About Artemis -->
       <section class="fade-section bg-forest py-20 text-beige lg:py-24">
         <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Mini education</p>
-          <h2 class="mt-4 font-display text-4xl sm:text-5xl">Why Recovery Changes Behavior Before Training Does</h2>
-          <p class="mx-auto mt-6 max-w-3xl text-lg leading-9 text-beige/82">
-            When stimulation keeps stacking and cortisol stays elevated, the body can remain partially activated even in calm moments. That is why slower rhythm, deeper rest, quieter environments, and better observation often change behavior before extra exercises do.
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">About Artemis</p>
+          <h2 class="mt-4 font-display text-4xl leading-[1.08] sm:text-5xl">Ethical dog behaviour support rooted in observation</h2>
+          <p class="mx-auto mt-6 max-w-4xl text-lg leading-9 text-beige/82">
+            Artemis Antoniou is an Ethical Dog Behaviour Specialist and Sensory Enrichment Coach educated through the Nordic Education Center for Dog Trainers under Turid Rugaas. She is also a certified Foundation Postural Analyst through Galen Myotherapy, has continued study with Dr Amber Batson, represents Greece in Pet Dog Trainers of Europe, and continues advanced study in calming signals.
           </p>
+          <p class="mx-auto mt-6 max-w-4xl text-lg leading-9 text-beige/74">
+            Her work is guided by empathy, behaviour science, and deep respect for the dog's natural way of being. The aim is not to control the dog into compliance, but to help families understand needs, reduce pressure, and build calmer communication in everyday life.
+          </p>
+          <div class="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-beige/80">
+            <span class="rounded-full border border-white/12 px-4 py-2">Sensory Enrichment Coach</span>
+            <span class="rounded-full border border-white/12 px-4 py-2">PDTE Representative For Greece</span>
+            <span class="rounded-full border border-white/12 px-4 py-2">Foundation Postural Analyst</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive experience entry -->
+      <section class="fade-section bg-white/45 py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="overflow-hidden rounded-[2.5rem] border border-forest/10 bg-white/78 shadow-card backdrop-blur-sm">
+            <div class="grid gap-10 px-8 py-10 lg:grid-cols-[0.94fr_1.06fr] lg:px-12 lg:py-12">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Interactive experience</p>
+                <h2 class="mt-4 max-w-[12ch] font-display text-4xl leading-[1.06] text-forest sm:text-5xl">Conversation With Your Dog</h2>
+                <p class="mt-6 max-w-xl text-lg leading-8 text-forest/74">
+                  Open a separate, calmer experience that walks through activation, recovery, environment, and the early signals that appear before behaviour escalates.
+                </p>
+                <a
+                  href="interactive-dog-conversation.html"
+                  class="mt-8 inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+                >
+                  Open the conversation
+                </a>
+              </div>
+
+              <div class="rounded-[2rem] bg-sand/55 p-7 shadow-card sm:p-8">
+                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">What it feels like</p>
+                <ul class="mt-6 space-y-4 text-lg leading-8 text-forest/76">
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>A reflective dialogue rather than a playful quiz</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>A calm walkthrough of activation, recovery, and environment</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-3 h-2 w-2 rounded-full bg-terracotta"></span><span>A gentle transition toward the 7-Day Reset guide</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -889,9 +948,9 @@
           <div class="grid gap-10 px-8 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-14 lg:py-14">
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Flagship offer</p>
-              <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">The 7-Day Dog Reset</h2>
-              <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/76">
-                A calm, structured PDF for owners who want to reduce nervous-system load before adding more training pressure.
+              <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[11ch]">The 7-Day Dog Reset</h2>
+              <p class="mt-6 max-w-2xl text-lg leading-8 text-forest/76 md:max-w-xl">
+                A calm, structured PDF for owners who want to lower nervous-system load before asking for more from the dog.
               </p>
               <ul class="mt-8 space-y-4 text-lg text-forest/80">
                 <li class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-terracotta"></span><span>9 in-depth chapters</span></li>
@@ -900,22 +959,69 @@
               </ul>
             </div>
 
-            <div class="rounded-[2rem] bg-white/80 p-8 shadow-card backdrop-blur-sm">
+            <div class="rounded-[2rem] bg-white/80 p-7 shadow-card backdrop-blur-sm sm:p-8">
               <p class="text-sm font-semibold uppercase tracking-[0.2em] text-forest/55">Instant digital access</p>
               <div class="mt-4">
                 <span class="font-display text-5xl text-forest">PDF Guide</span>
               </div>
               <p class="mt-5 leading-8 text-forest/72">
-                Start with the guide that explains why your dog may be over-activated, how to protect recovery, and how to reset the daily rhythm one day at a time.
+                Start with the guide that explains why a dog may stay over-activated, how to protect recovery, and how to reset the daily rhythm one day at a time.
               </p>
               <a
-                href="#top"
+                href="mailto:info@dogwithin.com?subject=7-Day%20Dog%20Reset%20Guide"
                 class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-terracotta px-6 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
               >
-                Get the Reset Guide
+                Request the guide
               </a>
-              <p class="mt-4 text-center text-sm font-medium text-forest/55">Delivered as an instant PDF download</p>
+              <a
+                href="mailto:info@dogwithin.com"
+                class="mt-4 inline-flex w-full items-center justify-center rounded-full border border-forest/12 bg-white px-6 py-4 text-base font-semibold text-forest transition duration-300 hover:border-forest/25"
+              >
+                Ask Artemis a question
+              </a>
+              <p class="mt-4 text-center text-sm font-medium text-forest/55">Request delivery details directly by email</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="fade-section mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl md:max-w-xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Contact</p>
+            <h2 class="mt-4 font-display text-4xl leading-[1.08] text-forest sm:text-5xl md:max-w-[13ch]">Speak with Artemis before you start</h2>
+          </div>
+          <p class="max-w-xl text-lg leading-8 text-forest/72 md:max-w-md">If you want help choosing the guide, asking about support, or reaching Artemis directly, start here.</p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-[repeat(3,minmax(0,1fr))]">
+          <article class="rounded-[2rem] bg-white p-7 shadow-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Email</p>
+            <a href="mailto:info@dogwithin.com" class="mt-4 inline-block break-all font-display text-2xl text-forest transition hover:text-terracotta sm:text-3xl">info@dogwithin.com</a>
+            <p class="mt-4 leading-8 text-forest/72">Best for guide questions, support requests, and direct contact about your dog's needs.</p>
+          </article>
+
+          <article class="rounded-[2rem] bg-white p-7 shadow-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Phone</p>
+            <a href="tel:+4796736337" class="mt-4 inline-block font-display text-2xl text-forest transition hover:text-terracotta sm:text-3xl">+47 96736337</a>
+            <p class="mt-4 leading-8 text-forest/72">For direct enquiries about one-to-one guidance, consultations, and practical next steps.</p>
+          </article>
+
+          <article class="rounded-[2rem] bg-white p-7 shadow-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Visit</p>
+            <p class="mt-4 font-display text-2xl text-forest sm:text-3xl">Bergensgata 12</p>
+            <p class="mt-2 text-lg text-forest/76">0468 Oslo, Norway</p>
+            <p class="mt-4 leading-8 text-forest/72">DogWithin is based in Oslo. Reach out directly to ask about availability and the most suitable support format.</p>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-sand/55 p-7 shadow-card sm:p-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Social</p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-forest/80">
+            <a href="https://www.tiktok.com/@petterworld.no" target="_blank" rel="noreferrer" class="rounded-full border border-forest/10 bg-white px-4 py-2 transition hover:border-forest/25">TikTok</a>
+            <a href="https://www.facebook.com/pettersworld" target="_blank" rel="noreferrer" class="rounded-full border border-forest/10 bg-white px-4 py-2 transition hover:border-forest/25">Facebook</a>
+            <a href="https://instagram.com/petterworld.no?igshid=YmMyMTA2M2Y=" target="_blank" rel="noreferrer" class="rounded-full border border-forest/10 bg-white px-4 py-2 transition hover:border-forest/25">Instagram</a>
           </div>
         </div>
       </section>
@@ -925,47 +1031,47 @@
         <div class="mx-auto max-w-4xl px-6 lg:px-8">
           <div class="text-center">
             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">FAQ</p>
-            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Common questions before you start the reset</h2>
+            <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Common questions about the approach</h2>
           </div>
 
           <div class="mt-12 space-y-4">
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>Is this a training program?</span>
+                <span>Is this obedience training?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                No. The guide is a structured reset period focused on lowering stimulation, protecting recovery, and improving observation before adding more training pressure.
+                No. This approach is based on communication, observation, and emotional balance. The guide helps you reduce pressure and meet the dog's needs before layering in more demands.
               </div>
             </article>
 
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>Will this help if my dog seems reactive or overwhelmed?</span>
+                <span>What kind of methods is the guide based on?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                Yes. The guide is especially useful when the dog struggles with rest, reacts quickly to small triggers, or seems unable to switch off after stimulation.
+                The philosophy is ethical and science-informed. It avoids fear, force, and unnecessary overstimulation, and focuses instead on calm structure, body language, rhythm, and real-life needs.
               </div>
             </article>
 
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>Do I stop all training for seven days?</span>
+                <span>Does every dog follow the same reset in exactly the same way?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                The goal is not perfection or doing nothing. The goal is reducing unnecessary stimulation, simplifying the rhythm, and letting the nervous system recover enough to learn more easily.
+                No. The guide gives a clear structure, but the work is still individual. You adapt pace, environment, rest, and daily choices to the specific dog in front of you.
               </div>
             </article>
 
             <article class="faq-item rounded-[1.5rem] bg-white shadow-card">
               <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-lg font-semibold text-forest">
-                <span>How do I access the guide?</span>
+                <span>Can I contact Artemis directly before buying?</span>
                 <span class="text-2xl text-terracotta">+</span>
               </button>
               <div class="faq-content hidden px-6 pb-6 leading-8 text-forest/72">
-                Access is digital. After purchase, you receive immediate download access to the PDF guide.
+                Yes. You can reach out directly by email at info@dogwithin.com or by phone at +47 96736337 if you want help choosing the right next step.
               </div>
             </article>
           </div>
@@ -975,27 +1081,44 @@
       <!-- Final CTA -->
       <section class="fade-section mx-auto max-w-5xl px-6 py-20 text-center lg:px-8 lg:py-24">
         <p class="text-sm font-semibold uppercase tracking-[0.24em] text-terracotta">Start this week</p>
-        <h2 class="mt-4 font-display text-4xl text-forest sm:text-5xl">Give The Nervous System Seven Calmer Days</h2>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-forest/72">
-          Start with a practical PDF that helps you slow the rhythm, protect recovery, and finally understand what is happening underneath the behavior.
+        <h2 class="mx-auto mt-4 max-w-[12ch] font-display text-4xl leading-[1.08] text-forest sm:text-5xl">Give your dog's nervous system seven calmer days</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-forest/72 md:max-w-xl">
+          Start with a practical PDF that helps you slow the rhythm, protect recovery, and understand the dog in front of you with more clarity and less pressure.
         </p>
-        <a
-          href="#offer"
-          class="mt-10 inline-flex items-center justify-center rounded-full bg-forest px-8 py-4 text-lg font-semibold text-beige transition duration-300 hover:bg-[#163121]"
-        >
-          Start the Reset
-        </a>
+        <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="#offer"
+            class="inline-flex items-center justify-center rounded-full bg-forest px-8 py-4 text-lg font-semibold text-beige transition duration-300 hover:bg-[#163121]"
+          >
+            Start the Reset
+          </a>
+          <a
+            href="mailto:info@dogwithin.com"
+            class="inline-flex items-center justify-center rounded-full border border-forest/15 bg-white px-8 py-4 text-lg font-semibold text-forest transition duration-300 hover:border-forest/30"
+          >
+            Contact Artemis
+          </a>
+        </div>
       </section>
     </main>
 
+    <footer class="border-t border-forest/10 bg-white/60 px-6 py-8 text-center backdrop-blur-sm lg:px-8">
+      <p class="text-sm leading-7 text-forest/70">
+        Designed by <a href="https://noustelos.gr" target="_blank" rel="noreferrer" class="font-semibold text-forest transition hover:text-terracotta">NOUSTELOS_STUDIO</a> /&gt; 2026 &copy; all rights reserved
+      </p>
+    </footer>
+
     <!-- Mobile sticky CTA -->
-    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-forest/10 bg-beige/95 p-4 shadow-soft backdrop-blur md:hidden">
-      <a
-        href="#offer"
-        class="inline-flex w-full items-center justify-center rounded-full bg-terracotta px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-[#b9603e]"
-      >
-        Get the Reset Guide
-      </a>
+    <div id="mobile-sticky-cta" class="mobile-sticky-cta fixed inset-x-0 bottom-0 z-40 border-t border-forest/10 bg-beige/95 px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-soft backdrop-blur lg:hidden">
+      <div class="mx-auto flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p class="px-1 text-sm font-semibold leading-6 text-forest">Get the reset guide</p>
+        <a
+          href="#offer"
+          class="inline-flex shrink-0 items-center justify-center rounded-full bg-terracotta px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:bg-[#b9603e] sm:px-7"
+        >
+          Instant Download
+        </a>
+      </div>
     </div>
 
     <!-- Minimal interaction scripts -->
@@ -1020,6 +1143,51 @@
       document.querySelectorAll('#philosophy .shadow-card, #behavior-quiz, #emotion-card, #offer .shadow-card, .faq-item').forEach((element) => {
         element.classList.add('micro-lift');
       });
+
+      const mobileStickyCta = document.getElementById('mobile-sticky-cta');
+      const offerSection = document.getElementById('offer');
+      const footerElement = document.querySelector('footer');
+
+      if (mobileStickyCta) {
+        let stickyCtaTicking = false;
+
+        const updateMobileStickyCta = () => {
+          stickyCtaTicking = false;
+
+          if (window.innerWidth >= 1024) {
+            mobileStickyCta.classList.remove('is-visible');
+            return;
+          }
+
+          const scrollableDistance = document.documentElement.scrollHeight - window.innerHeight;
+
+          if (scrollableDistance <= 0) {
+            mobileStickyCta.classList.remove('is-visible');
+            return;
+          }
+
+          const hasReachedHalfway = window.scrollY / scrollableDistance >= 0.5;
+          const offerTop = offerSection ? offerSection.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+          const footerTop = footerElement ? footerElement.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+          const shouldHideForOffer = offerTop <= window.innerHeight * 0.72;
+          const shouldHideForFooter = footerTop <= window.innerHeight;
+
+          mobileStickyCta.classList.toggle('is-visible', hasReachedHalfway && !shouldHideForOffer && !shouldHideForFooter);
+        };
+
+        const requestStickyCtaUpdate = () => {
+          if (stickyCtaTicking) {
+            return;
+          }
+
+          stickyCtaTicking = true;
+          window.requestAnimationFrame(updateMobileStickyCta);
+        };
+
+        updateMobileStickyCta();
+        window.addEventListener('scroll', requestStickyCtaUpdate, { passive: true });
+        window.addEventListener('resize', requestStickyCtaUpdate);
+      }
 
       const bounceIcon = (icon) => {
         if (!icon) {
